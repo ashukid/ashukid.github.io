@@ -1,4 +1,5 @@
-title: Ashutosh Chandra
+title: Ashu's Blog
+author: Ashutosh Chandra
 email: irm2015001@iiita.ac.in
 description: Searching a battle worth fighting for !
 baseurl: "" # the subpath of your site, e.g. /blog
@@ -10,18 +11,6 @@ github_username:  ashukid
 markdown: kramdown
 plugins:
   - jekyll-feed
-
-# Exclude from processing.
-# The following items will not be processed, by default. Create a custom list
-# to override the default setting.
-exclude:
-  - Gemfile
-  - Gemfile.lock
-  - node_modules
-  - vendor/bundle/
-  - vendor/cache/
-  - vendor/gems/
-  - vendor/ruby/
 
 plugins:
   - jekyll-feed

@@ -1,1 +1,1 @@
-My Blog - htpps://ashukid.github.io
+My Blog - https://ashukid.github.io
