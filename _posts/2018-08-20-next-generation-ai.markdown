@@ -1,7 +1,8 @@
 ---
+comments: true
 layout: post
 title:  "Next Generation Artificial Intelligence"
-excerpt: GAN's are getting immense popularity anf they're changing the way we used to see at Artificial Intelligence.
+excerpt: GAN's are getting immense popularity and they're changing the way we used to see at Artificial Intelligence
 date:   2018-08-20 20:35:06 +0530
 ---
 
