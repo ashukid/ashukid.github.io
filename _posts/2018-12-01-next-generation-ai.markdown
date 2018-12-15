@@ -2,8 +2,9 @@
 comments: true
 layout: post
 title:  "Next Generation Artificial Intelligence"
-excerpt: GAN's are getting immense popularity and they're changing the way we used to see at Artificial Intelligence
-date:   2018-08-20 20:35:06 +0530
+excerpt: GAN's are getting immense popularity and they're changing the way we used to see at Artificial Intelligence. In this blog I just 
+        want to give a brief idea about GAN and there might be possible scopes.
+date:   2018-12-08 20:35:06 +0530
 ---
 
 I was experimenting with different GAN models (Generative Adversarial Networks, if you don’t know) from a while and all the time I was feeling, this time I’m not teaching a machine how to do things, this time I’m asking a machine to be creative, like after showing some pictures asking it to generate similar pictures. (I’ll explain this in a while). It’s like telling a painter to paint something similar to landscape images, or telling a singer to sing similar to Ed Sheeran (off course we’ve to tell him first how landscape looks like or how Ed Sheeran voice sounds like). All this classification of cat and dog, stock prediction regression task, all that seems a decade ago work, even though it’s not. Now with the advancement in Reinforcement Learning and GAN we’ve come to next generation of AI.
