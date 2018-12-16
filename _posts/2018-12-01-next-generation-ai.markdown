@@ -2,8 +2,8 @@
 comments: true
 layout: post
 title:  "Next Generation Artificial Intelligence"
-excerpt: GAN's are getting immense popularity and they're changing the way we used to see at Artificial Intelligence. In this blog I just 
-        want to give a brief idea about GAN and there might be possible scopes.
+excerpt: GAN's are getting immense popularity and they're changing the way we used to see at Artificial Intelligence. In this blog I 
+        want to give a brief idea about GAN and there might be possible scopes. This is going to be a very short one.
 date:   2018-12-01
 ---
 
@@ -26,6 +26,6 @@ Now with GAN we’re giving the machine <b>imaginative power</b>. It sounds like
 
 With the advancement in GAN we can do hell lot of things, like you can generate new music (yes you can be a good composer with bad taste, although there are many in the industry), you can be a good painter without touching brushes. You might be thinking how is this different from copying, and here it is. While copying things we actually don’t think anything. We just join separate parts (like copying assignment from different friends). But with GAN we can create brand new things. Although all these is not possible yet, but if we can think of them, then we can definitely make it possible.
 
-I would love to end my article by mentioning honourable comment from Yann LeCun (father of CNN if you don’t know) about GAN - {% highlight ruby %}“the most interesting idea in the last 10 years in ML” {% endhighlight %}.
+I would love to end my article by mentioning honourable comment from Yann LeCun (father of CNN if you don’t know) about GAN - {% highlight ruby %}“the most interesting idea in the last 10 years of ML” {% endhighlight %}.
 
 ![My helpful screenshot]({{"/assets/gan2.png" | relative_url}})

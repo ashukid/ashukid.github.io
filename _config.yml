@@ -15,3 +15,7 @@ plugins:
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+
+disqus:
+  shortname: https-ashukid-github-io
+
