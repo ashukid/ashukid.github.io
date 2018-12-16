@@ -2,8 +2,7 @@
 comments: true
 layout: post
 title:  "Next Generation Artificial Intelligence"
-excerpt: GAN's are getting immense popularity and they're changing the way we used to see at Artificial Intelligence. In this blog I 
-        want to give a brief idea about GAN and there might be possible scopes. This is going to be a very short one.
+excerpt: In this blog I want to give a brief idea about Generative Adversarial Networks and there possible scopes. This is going to be a very short one.
 date:   2018-12-01
 ---
 
