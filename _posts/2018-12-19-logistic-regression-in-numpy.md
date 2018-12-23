@@ -52,11 +52,11 @@ So we alter weights as :
 
 <code>w<sub>i</sub> = w<sub>i</sub> - learning_rate * ∂L(w<sub>i</sub>)</code>
 
-Now with this much theoretical background we can't most surely code logistic regression and test on different data. Let's make a simple network for XOR gate.
+Now with this much theoretical background we can't most surely code logistic regression and test on different data. Let's make a simple network for AND gate.
 
 ### **Implementation:**
 
-The dataset for *XOR* gate is :
+The dataset for *AND* gate is :
 ```
 xdata=np.array([[0,0],[0,1],[1,0],[1,1]])
 ydata=np.array([[0],[0],[0],[1]])
@@ -100,4 +100,10 @@ for epoch in range(num_epoch):
 ```
 After running this code for `num_epoch` times, the model will prefectly learn the weights. 
 
-You can find all the codes I used here and in addition implementation for IRIS dataset on my [Github](https://github.com/ashukid/Neural_Networks_using_Numpy)
+```
+print(w,b)
+=> [2.64924114 2.6467143 ] [-4.09029157]
+```
+As you can see when x1 and x2 both will be 1, then only `x1*w1+x2*w2` will  be greater than bias and network will output 1 (hence AND gate).
+
+You can find all the codes I used here, and in addition simple implementation for IRIS dataset as well on my [Github](https://github.com/ashukid/Neural_Networks_using_Numpy)
