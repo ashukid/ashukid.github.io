@@ -6,11 +6,11 @@ excerpt: Logistic Regression is a fundamental concept to deep learning. In this 
 date:   2018-12-19
 ---
 
-How many times I'd stuck in tuning Hyperparameters and thought I'll code Simple Logistic regression in NumPy and go through basic building blocks of deep learning. But everytime my Laziness stopped me doing so. But not this time.
+How many times I got stuck in understanding weight dimensions and dot products and thought I'll code Simple Logistic regression in NumPy and go through the basics. But everytime my Laziness stopped me doing so. But not this time.
 
 Logistic Regression is the one of the most fundamental concept of neural nets. In the 1950s decade there was huge interest among researchers to mimic human brain for artificial intelligence. At that time first Logistic Regression model was implemented with linear activation. It was trained with simple logistic loss function and worked well for linear data but failed substantially for non-linear one - like the very famous **XOR** gate problem. 
 
-Then in around 1980s came the concept of **Gradient Descent** and **non-linear activation**. This gained immense popularity at that time as the model started working for non linear data as well. Then came Backpropagation, ConvNets, RNNs supported by immense computaion power and here we are with such explosion in Deep learning field. But it all started with **Logistic Regression**. 
+Then in around 1980s came the concept of **Gradient Descent** and **non-linear activation**. This gained immense popularity at that time as the model started working for non linear data as well. Then came Backpropagation, ConvNets, RNNs which are now supported by immense computaion power and here we are with such explosion in Deep learning field. But it all started with **Logistic Regression**. 
 
 Logistic Regression is basically used for binary classification. It has two parts - **forward pass** and **backward pass**. 
 
@@ -22,13 +22,13 @@ In the forward step you feed in multiple inputs, multiply it with corresponding 
 
 <code>out = sigmoid( W<sup>T</sup>.X + b)</code>
 
-Here x is input data and out is the network output. Let's say we have a dataset `(x,y)` where `y`(correct label) correspnds to label for corresponding `x` and we get `out`(predicted label) from the network for the same x. Now we need to know how far is the predicted label from correct label. For that we define a loss function. In this case for keeping things simple let's take mean square loss defined as :
+Here `x` is input data and `out` is the network output. Let's say we have a dataset `(x,y)` where `y`(correct label) correspnds to label for corresponding `x` and we get `out`(predicted label) from the network for the same x. Now we need to know how far is the predicted label from correct label. For that we define a loss function. In this case for keeping things simple let's take mean square loss defined as :
 
 <code>L = 1/2(out-y)<sup>2</sup></code>
 
 
 ### 2. Backward Pass:
-In the backward step we need alter weights so that model starts predicting better than the last time. We know how the model performed on the last iteration by loss function, we just need to somehow encode this information and pass it backwards. We do this by means of `Gradient Descent`.
+In the backward step we need to alter weights so that model starts predicting better than the last time. We know how the model performed on the last iteration by loss function, we just need to somehow encode this information and pass it backwards. We do this by means of `Gradient Descent`.
 The loss function is parabolic as clear by the definition. So there exist a local minima for sure at which loss is minimum and model will perform the best. Gradients of any function tells the direction of steepest(maximum) increase. If we calculate the gradient of loss function and take negative of the value, that will give the direction of steepest decrease. But since gradients gives only direction, we multiply it by a constant `(learning rate)`  to get a value that signifies how far should we go in that direction. Add this value to the weights of the network to alter them so as to move one step further down the loss function. We do this recursively until we reach the local minima and that is precisely the **Gradient Descent Algorithm**.
 
 For finding the gradient of loss function we take partail derivate of loss function with respect to weights of the network. 
@@ -36,7 +36,7 @@ For finding the gradient of loss function we take partail derivate of loss funct
 ∆L = (∂L(w1), ∂L(w2) ......), where ∂L(w1) = partial derivate of L with respect to w1
 ```
 
-Let's differetiate loss with repect to w1 :
+Let's differentiate loss with repect to w1 :
 ```
 ∂L(w1) = (out-y)*out*(1-out)*x1
 ```
@@ -61,7 +61,7 @@ The dataset for *XOR* gate is :
 xdata=np.array([[0,0],[0,1],[1,0],[1,1]])
 ydata=np.array([[0],[0],[0],[1]])
 ```
-Defining helper function :
+Defining helper functions :
 ```
 def sigmoid(x):
     return 1/(1+np.exp(-x))
@@ -72,11 +72,17 @@ def sigmoid_derivative(x):
 
 Defining hyperparameters (parameter not trained by model but specified manually) :
 ```
-input_neuron=2          # number of inputs
-output_neuron=1         # number of outputs
-etah=0.01               # learning rate
-batch_size=1            # number of example we'll show the network at one
-num_epoch=10000         # how many times we'll loop over the data
+input_neuron=2                      # number of inputs
+output_neuron=1                     # number of outputs
+etah=0.01                           # learning rate
+batch_size=1                        # number of example we'll show the network at once
+num_epoch=1000                      # how many times we'll loop over the data
+```
+
+Define weights and biases:
+```
+w=np.random.random(size=(input_neuron,))
+b=np.random.random(size=(output_neuron,))
 ```
 
 Main training code :
@@ -84,17 +90,12 @@ Main training code :
 for epoch in range(num_epoch):
     for x,y in zip(xdata,ydata):
     
-        x=x.reshape((1,2))
-        y=y.reshape((1,1))
+        out=sigmoid(x.dot(w)+b)                              # forward pass
+        dw = (out-y)*sigmoid_derivative(out)                 # calculating derivative
 
-        out=sigmoid(np.dot(x,w)+b)                              # forward pass
-
-        dw = ((out-y)*sigmoid_derivative(out)).reshape(1)       # calculating derivative
-        x=x.reshape((2,1))
-
-        for i in range(len(w)):                                 # backward pass for weights
+        for i in range(len(w)):                              # backward pass(weights)
             w[i] = w[i] - etah*dw*x[i]                          
-        for i in range(len(b)):                                 # backward pass for bias
+        for i in range(len(b)):                              # backward pass(bias)
             b[i] = b[i] - etah*dw                               
 ```
 After running this code for `num_epoch` times, the model will prefectly learn the weights. 
