@@ -26,6 +26,8 @@ First let's create a simple api endpoint and test it on local server. Go head an
 6.    answer=getFlowerClass(im)
 7.    return jsonify(status='OK', results=answer)
 
+if __name__=='__main__':
+    app.run(host='0.0.0.0', port=3000)
 ```
 In the 1st line I simply defined app name. In the 2nd line I created a route on which I'll make post request (If these things are unclear go through flask basics and then come back and read next). In 3rd line I defined the function *(photoRecognize)* that will be called when we make request to the route. Inside the function I took the image (url encoded string, 4th line) that'll be sent as POST request parameter. Then in 5th line url decoded the string and called the main function (*getFlowerClass*) which will process the image and send me the class the flower as string, which will be returned as JSON. If you want to have a look at the function (*getFlowerClass*) see my [Github](https://github.com/ashukid/Deploy-keras-model-on-Heroku/tree/master) page.
 
