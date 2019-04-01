@@ -4,6 +4,7 @@ layout: post
 title:  "Hosting Deep Learning Projects locally"
 excerpt: In this blog I'll explain you why hosting projects locally is a better option, how to start server on localhost and generate public url with custom domain name.
 date:   2018-12-24
+category: tech
 ---
 
 I needed to make an app that can classify flowers from images. I already had trained model ready for deployment, only thing left was actual deployment. Front end was ready, only bottleneck was server - where to host the server *freely*. I can't do it on localhost because my IP will change evertime I reconnect to internet and obviously I'm not going to rebuild the app each time IP is changed. So I needed a fixed public URL which I can use to build my app.
