@@ -14,6 +14,7 @@ layout: default
     <ul class="post-list">
       {%- for post in site.posts -%}
       <li>
+          <!-- {%- if post.category != "timeline" -%} -->
           {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
           <span class="post-meta">{{ post.date | date: date_format }}</span>
           <h3>
@@ -22,6 +23,7 @@ layout: default
             </a>
             {{ post.excerpt }}
           </h3>
+          {%- endif -%}
       </li>
       {%- endfor -%}
     </ul>
