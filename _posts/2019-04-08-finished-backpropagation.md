@@ -1,7 +1,7 @@
 ---
 comments: false
 layout: post
-title:  "Finished Coding Backpropagation from scrach"
+title:  "Finished Coding Backpropagation from scratch"
 date:   2019-04-08
 category: timeline
 ---
