@@ -1,8 +1,8 @@
 ---
 comments: false
 layout: post
-title:  "The Replicatation Hypothesis"
-date:   2019-08-08
+title:  "The Replication Hypothesis"
+date:   2019-04-09
 category: timeline
 ---
 
