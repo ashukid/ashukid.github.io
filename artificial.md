@@ -4,6 +4,6 @@
 
 layout: artificial
 permalink: artificial/
-title: Artificial Intelligence
+title: AI
 heading: AI Posts
 ---

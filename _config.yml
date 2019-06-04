@@ -6,6 +6,22 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://ashukid.github.io"
 github_username:  ashukid
 
+collections:
+  artificial:
+    output: true
+    permalink: /:categories/:year/:month/:day/:title.html
+  tech:
+    output: true
+    permalink: /:categories/:year/:month/:day/:title.html
+  books:
+    output: true
+    permalink: /:categories/:year/:month/:day/:title.html
+  philosophy:
+    output: true
+    permalink: /:categories/:year/:month/:day/:title.html
+  timeline:
+    output: true
+    permalink: /:categories/:year/:month/:day/:title.html
 
 # Build settings
 markdown: kramdown

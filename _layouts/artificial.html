@@ -8,14 +8,10 @@ layout: default
   {%- endif -%}
 
   {{ content }}
-
-  {%- if site.posts.size > 0 -%}
-    <!-- <h2 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h2> -->
+  {%- if site.artificial.size > 0 -%}
     <ul class="post-list">
-      {%- for post in site.posts -%}
+      {%- for post in site.artificial reversed -%}
       <li>
-
-        {%- if post.category == "ml" -%}
           {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
           <span class="post-meta">{{ post.date | date: date_format }}</span>
           <h3>
@@ -24,8 +20,6 @@ layout: default
             </a>
             {{ post.excerpt }}
           </h3>
-          {%- endif -%}
-          
       </li>
       {%- endfor -%}
     </ul>

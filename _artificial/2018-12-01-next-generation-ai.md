@@ -4,7 +4,7 @@ layout: post
 title:  "Next Generation Artificial Intelligence"
 excerpt: In this blog I want to give a brief idea about Generative Adversarial Networks and there possible scopes. This is going to be a very short one.
 date:   2018-12-01
-category: ml
+category: artificial
 ---
 
 I was experimenting with different GAN models (Generative Adversarial Networks, if you don’t know) from a while and all the time I was feeling, this time I’m not teaching a machine how to do things, this time I’m asking a machine to be creative, like after showing some pictures asking it to generate similar pictures. (I’ll explain this in a while). It’s like telling a painter to paint something similar to landscape images, or telling a singer to sing similar to Ed Sheeran (off course we’ve to tell him first how landscape looks like or how Ed Sheeran voice sounds like). All this classification of cat and dog, stock prediction regression task, all that seems a decade ago work, even though it’s not. Now with the advancement in Reinforcement Learning and GAN we’ve come to next generation of AI.
