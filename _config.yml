@@ -6,8 +6,6 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://ashukid.github.io"
 github_username:  ashukid
 
-theme: jekyll-theme-architect
-
 collections:
   artificial:
     output: true
@@ -27,6 +25,7 @@ collections:
 
 # Build settings
 markdown: kramdown
+theme: jekyll-theme-architect
 plugins:
   - jekyll-feed
 
