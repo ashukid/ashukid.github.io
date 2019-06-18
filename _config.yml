@@ -6,7 +6,10 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://ashukid.github.io"
 github_username:  ashukid
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 434ec4889f74de09c59140ae69e3155bf1105f79
 collections:
   artificial:
     output: true
