@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Next Generation Artificial Intelligence | Ashu’s Blog</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Next Generation Artificial Intelligence" />
+<meta name="author" content="Ashutosh Chandra" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="In this blog I want to give a brief idea about Generative Adversarial Networks and there possible scopes. This is going to be a very short one." />
+<meta property="og:description" content="In this blog I want to give a brief idea about Generative Adversarial Networks and there possible scopes. This is going to be a very short one." />
+<link rel="canonical" href="http://localhost:4000/artificial/2018/12/01/next-generation-ai.html" />
+<meta property="og:url" content="http://localhost:4000/artificial/2018/12/01/next-generation-ai.html" />
+<meta property="og:site_name" content="Ashu’s Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-12-01T00:00:00+05:30" />
+<script type="application/ld+json">
+{"url":"http://localhost:4000/artificial/2018/12/01/next-generation-ai.html","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/artificial/2018/12/01/next-generation-ai.html"},"datePublished":"2018-12-01T00:00:00+05:30","author":{"@type":"Person","name":"Ashutosh Chandra"},"description":"In this blog I want to give a brief idea about Generative Adversarial Networks and there possible scopes. This is going to be a very short one.","@type":"BlogPosting","headline":"Next Generation Artificial Intelligence","dateModified":"2018-12-01T00:00:00+05:30","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Ashu's Blog" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Ashu&#39;s Blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/artificial/">AI</a><a class="page-link" href="/book/">Books</a><a class="page-link" href="/philosophy/">Philosophy</a><a class="page-link" href="/tech/">Tech</a><a class="page-link" href="/timeline/">Timeline</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Next Generation Artificial Intelligence</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2018-12-01T00:00:00+05:30" itemprop="datePublished">Dec 1, 2018
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>I was experimenting with different GAN models (Generative Adversarial Networks, if you don’t know) from a while and all the time I was feeling, this time I’m not teaching a machine how to do things, this time I’m asking a machine to be creative, like after showing some pictures asking it to generate similar pictures. (I’ll explain this in a while). It’s like telling a painter to paint something similar to landscape images, or telling a singer to sing similar to Ed Sheeran (off course we’ve to tell him first how landscape looks like or how Ed Sheeran voice sounds like). All this classification of cat and dog, stock prediction regression task, all that seems a decade ago work, even though it’s not. Now with the advancement in Reinforcement Learning and GAN we’ve come to next generation of AI.</p>
+
+<p>So let’s dive deeper to understand  GAN first. GAN is based on three concepts -</p>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"> <span class="no">Generative</span><span class="p">,</span> <span class="no">Adversarial</span> <span class="n">and</span> <span class="no">Networks</span> </code></pre></figure>
+
+<p>So let’s begin with Network first.</p>
+
+<p>Basically the network here means a <b>multilayer perceptron network</b> , though we use more advanced architecture, but for now let’s keep it simple. So there are two networks, Discriminator and Generator. Consider we’ve a cat image dataset (28 * 28 ) and a function that generates uniform noise of given shape (let’s say 1 * 100). So we give this uniform noise to the Generator and it’ll generate a 28 * 28 image from the noise. Let’s call it fake image (initially it’ll be just random noise). So we’ve real image from the cat dataset and fake image from the Generator, now we’ll challenge the Discriminator to tell which one is real image. Obviously in the start Discriminator will easily distinguish between both, but here is the nice concept. From the response of Discriminator, Generator network will alter its weights.You can think of it like Discriminator is telling you the probability of an image to be a real image. So initially it’ll be around 1 for real image and 0 for fake image. So we’ll take the difference and give it to the Generator, therefore the Generator will know how far it is from generating images like real ones and alter it’s weights accordingly.</p>
+
+<p>Here comes the concept of Adversarial. Adversarial basically means a situation involving <b>opposition or conflicts</b>. If you look deeper you’ll see that’s exactly what happening. While Discriminator has to differentiate between real and fake image, Generator is trying to Generate images, that is similar to real image so that Discriminator can no more distinguish between them. That is Generator is just trying to fool the Discriminator while the Discriminator is trying not to get fooled (hence conflict). You can visualise the Generator as forger and Discriminator as Detective.</p>
+
+<p><img src="/assets/gan1.png" alt="My helpful screenshot" /></p>
+
+<p>So once you train the two networks enough that the Discriminator is no more able to distinguish between real and fake image, giving probability of 0.5 for each image(optimal condition), that means Generator is generating as good image as the real one. But since the generated images comes from a random noise (that 1*100), no matter how much similar the image would be from the real one, it’ll be a unique image. Hence essentially the Generator is generating brand new images, and hence the word <b>Generative</b>.</p>
+
+<p>So now we’ve a nicer concept of GAN, let me explain what I mean by Next Generation AI. If you see what have we done so far, you’ll notice we’ve just given senses to the machine. Like classifying images and localising the objects (eyes), classifying music (ears), in the robotics field you can push a robot and it’ll be not fall (touch) etc. Although we’re still lacking here with smell and taste.</p>
+
+<p>Now with GAN we’re giving the machine <b>imaginative power</b>. It sounds like a sixth sense for a machine. We can let the machine see some images, and then we’re asking it to generate new unique images, to go in a imaginative world, create and carve new images, something very unique and very realistic as well. Although technically there is actually no imagination here, but looking from outside it does seem so.</p>
+
+<p>With the advancement in GAN we can do hell lot of things, like you can generate new music (yes you can be a good composer with bad taste, although there are many in the industry), you can be a good painter without touching brushes. You might be thinking how is this different from copying, and here it is. While copying things we actually don’t think anything. We just join separate parts (like copying assignment from different friends). But with GAN we can create brand new things. Although all these is not possible yet, but if we can think of them, then we can definitely make it possible.</p>
+
+<p>I would love to end my article by mentioning honourable comment from Yann LeCun (father of CNN if you don’t know) about GAN -</p>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="err">“</span><span class="n">the</span> <span class="n">most</span> <span class="n">interesting</span> <span class="n">idea</span> <span class="k">in</span> <span class="n">the</span> <span class="n">last</span> <span class="mi">10</span> <span class="n">years</span> <span class="n">of</span> <span class="no">ML</span><span class="err">”</span> </code></pre></figure>
+<p>.</p>
+
+<p><img src="/assets/gan2.png" alt="My helpful screenshot" /></p>
+
+  </div><a class="u-url" href="/artificial/2018/12/01/next-generation-ai.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <!-- <h2 class="footer-heading">Ashu&#39;s Blog</h2> -->
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Ashutosh Chandra</li><li><a class="u-email" href="mailto:irm2015001@iiita.ac.in">irm2015001@iiita.ac.in</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/ashukid"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">ashukid</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Searching a battle worth fighting for !</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>My experience of deploying keras/tensorflow model on Heroku | Ashu’s Blog</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="My experience of deploying keras/tensorflow model on Heroku" />
+<meta name="author" content="Ashutosh Chandra" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This blog is for all those enthusiast who wants to deploy there deep learning models freely on Heroku without the hassle of Google cloud platform or Amazon web services." />
+<meta property="og:description" content="This blog is for all those enthusiast who wants to deploy there deep learning models freely on Heroku without the hassle of Google cloud platform or Amazon web services." />
+<link rel="canonical" href="http://localhost:4000/tech/2018/12/16/deploy-models-on-heroku.html" />
+<meta property="og:url" content="http://localhost:4000/tech/2018/12/16/deploy-models-on-heroku.html" />
+<meta property="og:site_name" content="Ashu’s Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-12-16T00:00:00+05:30" />
+<script type="application/ld+json">
+{"url":"http://localhost:4000/tech/2018/12/16/deploy-models-on-heroku.html","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/tech/2018/12/16/deploy-models-on-heroku.html"},"datePublished":"2018-12-16T00:00:00+05:30","author":{"@type":"Person","name":"Ashutosh Chandra"},"description":"This blog is for all those enthusiast who wants to deploy there deep learning models freely on Heroku without the hassle of Google cloud platform or Amazon web services.","@type":"BlogPosting","headline":"My experience of deploying keras/tensorflow model on Heroku","dateModified":"2018-12-16T00:00:00+05:30","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Ashu's Blog" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Ashu&#39;s Blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/artificial/">AI</a><a class="page-link" href="/book/">Books</a><a class="page-link" href="/philosophy/">Philosophy</a><a class="page-link" href="/tech/">Tech</a><a class="page-link" href="/timeline/">Timeline</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">My experience of deploying keras/tensorflow model on Heroku</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2018-12-16T00:00:00+05:30" itemprop="datePublished">Dec 16, 2018
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <blockquote>
+  <p>Spoiler : Heroku is not good enough for deploying deep learning models, so go for GCP, AWS or DigitalOcean. If you want to know why and don’t believe me until you do it yourself go ahead and read full content.</p>
+</blockquote>
+
+<p>This was the first time I was deploying a model and creating a REST api endpoint to call from my mobile app or flask app. I already used all my digital ocean credit and didn’t want to use GCP or AWS. So i went for <strong>Heroku</strong>. I searched a lot whether we can deploy keras model on heroku or not, but didn’t get anything. So I went ahead and deployed my own model.</p>
+
+<p>All the code snippets I use in this blog are on my <a href="https://github.com/ashukid/Deploy-keras-model-on-Heroku/tree/master">Github</a></p>
+
+<h3 id="1-creating-the-rest-api-endpoint"><strong>1. Creating the REST Api endpoint</strong></h3>
+
+<p>First let’s create a simple api endpoint and test it on local server. Go head and install <code class="highlighter-rouge">Flask</code> first. Then create a file with name <em>main.py</em> and insert the following piece of code.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. app=Flask(__name__)
+2. @app.route('/api',methods=['POST'])
+3. def photoRecognize():
+
+4.    im=request.form['image']
+5.    im=unquote(im)
+6.    answer=getFlowerClass(im)
+7.    return jsonify(status='OK', results=answer)
+
+if __name__=='__main__':
+    app.run(host='0.0.0.0', port=3000)
+</code></pre></div></div>
+<p>In the 1st line I simply defined app name. In the 2nd line I created a route on which I’ll make post request (If these things are unclear go through flask basics and then come back and read next). In 3rd line I defined the function <em>(photoRecognize)</em> that will be called when we make request to the route. Inside the function I took the image (url encoded string, 4th line) that’ll be sent as POST request parameter. Then in 5th line url decoded the string and called the main function (<em>getFlowerClass</em>) which will process the image and send me the class the flower as string, which will be returned as JSON. If you want to have a look at the function (<em>getFlowerClass</em>) see my <a href="https://github.com/ashukid/Deploy-keras-model-on-Heroku/tree/master">Github</a> page.</p>
+
+<h3 id="2-installing-heroku-cli"><strong>2. Installing Heroku CLI</strong></h3>
+
+<p>I’m a big fan of command line, so I’ll be doing everything from command line itself. Go ahead and install <code class="highlighter-rouge">Heroku CLI</code>. Create a folder and put the file <em>main.py</em> inside it. Open up terminal and navigate to the folder just created and execute the command <code class="highlighter-rouge">heroku create</code>. This creates a heroku app and and will print something like :</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Creating app... done, ⬢ serene-caverns-82714
+https://abc-xyz-12345.herokuapp.com/ | https://git.heroku.com/abc-xyz-12345.git
+</code></pre></div></div>
+
+<p>First https link is the domain name of the app and second one is the link of github repository. A remote with name heroku is also created. So <code class="highlighter-rouge">git init</code> the folder and add the remote :</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git remote add heroku https://git.heroku.com/abc-xyz-12345.git
+</code></pre></div></div>
+
+<h3 id="3-configurations-for-heroku-app"><strong>3. Configurations for Heroku App</strong></h3>
+
+<p>Now is the time for adding configurations files for Heroku. Create following files in the same folder :</p>
+
+<h4 id="a-runtimetxt-">A. runtime.txt :</h4>
+<p>This file is used to specify the run time for the app and the specific version. In this case we’re using <em>python</em> runtime environment. So add this line in the file :</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python-3.7.0
+</code></pre></div></div>
+
+<h4 id="b-requirementstxt-">B. requirements.txt :</h4>
+<p>Write down all the dependency of your app in this file like :</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Flask==1.0.2
+Keras==2.1.5
+tensorflow==1.7.0
+</code></pre></div></div>
+<p>Heroku will install all those dependencies at the time of deployment.</p>
+
+<blockquote>
+  <p>NOTE : If you need OpenCV for your app, it has some dependencies that needs to be installed with apt. For that follow step C.</p>
+</blockquote>
+
+<h4 id="c-aptfile-">C. Aptfile :</h4>
+<p>For all those dependencies that have to be installed with  <code class="highlighter-rouge">apt</code>, first install herok-buildpack-apt with following command :</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>heroku buildpacks:add --index 1 https://github.com/heroku/heroku-buildpack-apt
+</code></pre></div></div>
+<p>Then create an <code class="highlighter-rouge">Aptfile</code> and write down all those dependencies like :</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>libsm6
+libxrender1
+libfontconfig1
+libice6
+</code></pre></div></div>
+<p>These 4 dependencies are for OpenCV.</p>
+
+<h4 id="d-procfile-">D. Procfile :</h4>
+<p>This file tells Heroku what command to execute after app is deployed. In my case I wanted a web app, the file to run is <code class="highlighter-rouge">main.py</code>, so my Procfile content was like this:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>web: gunicorn main:app --loga-file=-
+</code></pre></div></div>
+<p>Gunicorn is Python Web Server Gateway Interface HTTP server. Go ahead and install it first.</p>
+
+<h3 id="4-deploying-the-app"><strong>4. Deploying the App</strong></h3>
+<p>Push all the codes to the repository.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push heroku master
+</code></pre></div></div>
+
+<p>This command will push all the codes, install all the requirements specified and release the 1st version of the app.
+Go ahead and run  <code class="highlighter-rouge">heroku open</code> to run the app.</p>
+
+<p>Since I was passing image as post request I had to use some app that can send post request to the endpoint. For that I used <em>Postman</em>.</p>
+
+<p>Everything worked till I sent the post request. The app was deployed properly, all the requirements was installed and app was running all well locally. So I expected it to work from heroku server as well. 
+But as soon as I requested the server - boom !! App crashed.
+I saw the logs (<code class="highlighter-rouge">heroku logs --tail</code>), there I found sometimes <em>request timeour error</em> and sometimes <em>memory limit exceeded error</em>.</p>
+
+<p>Here is the whole crush, heroku gives only <strong>30s</strong> for one request and a total of <strong>500MB</strong> of RAM. Both of them is insufficient for deep learning models as evaluation and processing takes more time as well as more memory .</p>
+
+<p>Hence after a hard work of 2 days, I finally realised I’ve to buy credit on DigitalOcean or create account on GCP.</p>
+
+  </div><a class="u-url" href="/tech/2018/12/16/deploy-models-on-heroku.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <!-- <h2 class="footer-heading">Ashu&#39;s Blog</h2> -->
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Ashutosh Chandra</li><li><a class="u-email" href="mailto:irm2015001@iiita.ac.in">irm2015001@iiita.ac.in</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/ashukid"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">ashukid</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Searching a battle worth fighting for !</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

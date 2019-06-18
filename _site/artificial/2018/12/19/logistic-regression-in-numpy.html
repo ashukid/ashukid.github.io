@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Coding a Simple Logistic Regression in NumPy | Ashu’s Blog</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Coding a Simple Logistic Regression in NumPy" />
+<meta name="author" content="Ashutosh Chandra" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Logistic Regression is a fundamental concept to deep learning. In this blog I’m going to code a logistic regression with gradient descent algorithm from scratch in NumPy." />
+<meta property="og:description" content="Logistic Regression is a fundamental concept to deep learning. In this blog I’m going to code a logistic regression with gradient descent algorithm from scratch in NumPy." />
+<link rel="canonical" href="http://localhost:4000/artificial/2018/12/19/logistic-regression-in-numpy.html" />
+<meta property="og:url" content="http://localhost:4000/artificial/2018/12/19/logistic-regression-in-numpy.html" />
+<meta property="og:site_name" content="Ashu’s Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-12-19T00:00:00+05:30" />
+<script type="application/ld+json">
+{"url":"http://localhost:4000/artificial/2018/12/19/logistic-regression-in-numpy.html","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/artificial/2018/12/19/logistic-regression-in-numpy.html"},"datePublished":"2018-12-19T00:00:00+05:30","author":{"@type":"Person","name":"Ashutosh Chandra"},"description":"Logistic Regression is a fundamental concept to deep learning. In this blog I’m going to code a logistic regression with gradient descent algorithm from scratch in NumPy.","@type":"BlogPosting","headline":"Coding a Simple Logistic Regression in NumPy","dateModified":"2018-12-19T00:00:00+05:30","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Ashu's Blog" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Ashu&#39;s Blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/artificial/">AI</a><a class="page-link" href="/book/">Books</a><a class="page-link" href="/philosophy/">Philosophy</a><a class="page-link" href="/tech/">Tech</a><a class="page-link" href="/timeline/">Timeline</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Coding a Simple Logistic Regression in NumPy</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2018-12-19T00:00:00+05:30" itemprop="datePublished">Dec 19, 2018
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>How many times I got stuck in understanding weight dimensions and dot products and thought I’ll code Simple Logistic regression in NumPy and go through the basics. But everytime my Laziness stopped me doing so. But not this time.</p>
+
+<p>Logistic Regression is the one of the most fundamental concept of neural nets. In the 1950s decade there was huge interest among researchers to mimic human brain for artificial intelligence. At that time first Logistic Regression model was implemented with linear activation. It was trained with simple logistic loss function and worked well for linear data but failed substantially for non-linear one - like the very famous <strong>XOR</strong> gate problem.</p>
+
+<p>Then in around 1980s came the concept of <strong>Gradient Descent</strong> and <strong>non-linear activation</strong>. This gained immense popularity at that time as the model started working for non linear data as well. Then came Backpropagation, ConvNets, RNNs which are now supported by immense computaion power and here we are with such explosion in Deep learning field. But it all started with <strong>Logistic Regression</strong>.</p>
+
+<p>Logistic Regression is basically used for binary classification. It has two parts - <strong>forward pass</strong> and <strong>backward pass</strong>.</p>
+
+<h3 id="1-forward-pass">1. Forward Pass:</h3>
+<p>In the forward step you feed in multiple inputs, multiply it with corresponding weight vectors, add a bias vector and pass it through non-linear activation function (like <em>sigmoid</em>) and you’ll get a probability between (0 - 1). The mathematical equation for the same is given as :</p>
+
+<p><code>out = sigmoid( w1*x1 + w2*x2 + ... + w(n)*x(n) + b )</code></p>
+
+<p><code>out = sigmoid( W<sup>T</sup>.X + b)</code></p>
+
+<p>Here <code class="highlighter-rouge">x</code> is input data and <code class="highlighter-rouge">out</code> is the network output. Let’s say we have a dataset <code class="highlighter-rouge">(x,y)</code> where <code class="highlighter-rouge">y</code>(correct label) correspnds to label for corresponding <code class="highlighter-rouge">x</code> and we get <code class="highlighter-rouge">out</code>(predicted label) from the network for the same x. Now we need to know how far is the predicted label from correct label. For that we define a loss function. In this case for keeping things simple let’s take mean square loss defined as :</p>
+
+<p><code>L = 1/2(out-y)<sup>2</sup></code></p>
+
+<h3 id="2-backward-pass">2. Backward Pass:</h3>
+<p>In the backward step we need to alter weights so that model starts predicting better than the last time. We know how the model performed on the last iteration by loss function, we just need to somehow encode this information and pass it backwards. We do this by means of <code class="highlighter-rouge">Gradient Descent</code>.
+The loss function is parabolic as clear by the definition. So there exist a local minima for sure at which loss is minimum and model will perform the best. Gradients of any function tells the direction of steepest(maximum) increase. If we calculate the gradient of loss function and take negative of the value, that will give the direction of steepest decrease. But since gradients gives only direction, we multiply it by a constant <code class="highlighter-rouge">(learning rate)</code>  to get a value that signifies how far should we go in that direction. Add this value to the weights of the network to alter them so as to move one step further down the loss function. We do this recursively until we reach the local minima and that is precisely the <strong>Gradient Descent Algorithm</strong>.</p>
+
+<p>For finding the gradient of loss function we take partail derivate of loss function with respect to weights of the network.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>∆L = (∂L(w1), ∂L(w2) ......), where ∂L(w1) = partial derivate of L with respect to w1
+</code></pre></div></div>
+
+<p>Let’s differentiate loss with repect to w1 :</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>∂L(w1) = (out-y)*out*(1-out)*x1
+</code></pre></div></div>
+<p>Where the term <code class="highlighter-rouge">out*(1-out)</code> came because out is sigmoid activated function and derivative of sigmoid function is defined as :</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>∂(sigmoid(x)) = sigmoid(x)*(1-sigmoid(x))
+</code></pre></div></div>
+<p>In general :</p>
+
+<p><code>∂L(w<sub>i</sub>) = (out-y)*out*(1-out)*x<sub>i</sub></code></p>
+
+<p>So we alter weights as :</p>
+
+<p><code>w<sub>i</sub> = w<sub>i</sub> - learning_rate * ∂L(w<sub>i</sub>)</code></p>
+
+<p>Now with this much theoretical background we can’t most surely code logistic regression and test on different data. Let’s make a simple network for AND gate.</p>
+
+<h3 id="implementation"><strong>Implementation:</strong></h3>
+
+<p>The dataset for <em>AND</em> gate is :</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>xdata=np.array([[0,0],[0,1],[1,0],[1,1]])
+ydata=np.array([[0],[0],[0],[1]])
+</code></pre></div></div>
+<p>Defining helper functions :</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def sigmoid(x):
+    return 1/(1+np.exp(-x))
+
+def sigmoid_derivative(x):
+    return x*(1-x)
+</code></pre></div></div>
+
+<p>Defining hyperparameters (parameter not trained by model but specified manually) :</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>input_neuron=2                      # number of inputs
+output_neuron=1                     # number of outputs
+etah=0.01                           # learning rate
+batch_size=1                        # number of example we'll show the network at once
+num_epoch=1000                      # how many times we'll loop over the data
+</code></pre></div></div>
+
+<p>Define weights and biases:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>w=np.random.random(size=(input_neuron,))
+b=np.random.random(size=(output_neuron,))
+</code></pre></div></div>
+
+<p>Main training code :</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for epoch in range(num_epoch):
+    for x,y in zip(xdata,ydata):
+    
+        out=sigmoid(x.dot(w)+b)                              # forward pass
+        dw = (out-y)*sigmoid_derivative(out)                 # calculating derivative
+
+        for i in range(len(w)):                              # backward pass(weights)
+            w[i] = w[i] - etah*dw*x[i]                          
+        for i in range(len(b)):                              # backward pass(bias)
+            b[i] = b[i] - etah*dw                               
+</code></pre></div></div>
+<p>After running this code for <code class="highlighter-rouge">num_epoch</code> times, the model will prefectly learn the weights.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>print(w,b)
+=&gt; [2.64924114 2.6467143 ] [-4.09029157]
+</code></pre></div></div>
+<p>As you can see when x1 and x2 both will be 1, then only <code class="highlighter-rouge">x1*w1+x2*w2</code> will  be greater than bias and network will output 1 (hence AND gate).</p>
+
+<p>You can find all the codes I used here, and in addition simple implementation for IRIS dataset as well on my <a href="https://github.com/ashukid/Neural_Networks_using_Numpy">Github</a></p>
+
+  </div><a class="u-url" href="/artificial/2018/12/19/logistic-regression-in-numpy.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <!-- <h2 class="footer-heading">Ashu&#39;s Blog</h2> -->
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Ashutosh Chandra</li><li><a class="u-email" href="mailto:irm2015001@iiita.ac.in">irm2015001@iiita.ac.in</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/ashukid"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">ashukid</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Searching a battle worth fighting for !</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

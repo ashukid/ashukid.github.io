@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-06-18T22:54:30+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Ashu’s Blog</title><subtitle>Searching a battle worth fighting for !</subtitle><author><name>Ashutosh Chandra</name></author><entry><title type="html">Hosting Deep Learning Projects locally</title><link href="http://localhost:4000/tech/2018/12/24/hosting-deep-learning-projects-locally.html" rel="alternate" type="text/html" title="Hosting Deep Learning Projects locally" /><published>2018-12-24T00:00:00+05:30</published><updated>2018-12-24T00:00:00+05:30</updated><id>http://localhost:4000/tech/2018/12/24/hosting-deep-learning-projects-locally</id><content type="html" xml:base="http://localhost:4000/tech/2018/12/24/hosting-deep-learning-projects-locally.html">&lt;p&gt;I needed to make an app that can classify flowers from images. I already had trained model ready for deployment, only thing left was actual deployment. Front end was ready, only bottleneck was server - where to host the server &lt;em&gt;freely&lt;/em&gt;. I can’t do it on localhost because my IP will change evertime I reconnect to internet and obviously I’m not going to rebuild the app each time IP is changed. So I needed a fixed public URL which I can use to build my app.&lt;/p&gt;
+
+&lt;p&gt;I know there are various options to host your server like &lt;code class=&quot;highlighter-rouge&quot;&gt;GCP&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;AWS&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;Digital Ocean&lt;/code&gt;. But they all are paid and no matter how cheaper they are, still the same for me. So I tried hosting my model on &lt;code class=&quot;highlighter-rouge&quot;&gt;heroku&lt;/code&gt;. See this &lt;a href=&quot;https://ashukid.github.io/2018/12/16/deploy-models-on-heroku.html&quot;&gt;blog&lt;/a&gt; to know more about hosting on &lt;code class=&quot;highlighter-rouge&quot;&gt;heroku&lt;/code&gt;. That didn’t work either becuase in short they give you only &lt;em&gt;500MB RAM&lt;/em&gt; in free version, which is definitely not sufficient for running deep learning models.&lt;/p&gt;
+
+&lt;p&gt;After spending complete 2 days on Heroku I came to know that AWS gives free EC2 with &lt;em&gt;1GB of RAM for 1 year&lt;/em&gt;. I was like - huh ! why don’t I spend my time on research !! So next I went for &lt;code class=&quot;highlighter-rouge&quot;&gt;AWS&lt;/code&gt;. I deployed my model on &lt;code class=&quot;highlighter-rouge&quot;&gt;AWS&lt;/code&gt;, but it turned out even 1GB is not sufficient for my model (I was using Resnet50 model). Finally I sat down and tried to figure out what is the problem :&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;I can host on my localhost but can’t use the chaning IP address for building app.&lt;/li&gt;
+  &lt;li&gt;Cloud service do give fixed public URLs, but RAM is not sufficient.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;So the problem was - RAM and public URL. My localhost is solving the RAM problem, so I tried to figure out can I solve URL problem as well.&lt;/p&gt;
+
+&lt;p&gt;It turned out yes - &lt;a href=&quot;https://ngrok.com/&quot;&gt;ngrok&lt;/a&gt; is the solution. &lt;code class=&quot;highlighter-rouge&quot;&gt;ngrok&lt;/code&gt; basically provides a tunnel from your local server endpoint to public endpoint. But again they don’t give you custom domain for free, everytime you run &lt;code class=&quot;highlighter-rouge&quot;&gt;ngrok&lt;/code&gt; new public URL will be generated, so clearly can’t use it as well. 
+So then I searched for open source alternatives of &lt;code class=&quot;highlighter-rouge&quot;&gt;ngrok&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Then I found &lt;a href=&quot;https://serveo.net/&quot;&gt;serveo&lt;/a&gt;. And hell yeah, this was the solution of my problem. They provide custom domain freely and the better part no installation is required at all. I was really contended by their service and this was one of my findings that is gonna help me a lot in the future for sure.&lt;/p&gt;
+
+&lt;p&gt;Enough of background, let’s get directly to the steps for hosting your app :&lt;/p&gt;
+
+&lt;h4 id=&quot;1-create-an-api-endpoint-for-your-app-&quot;&gt;&lt;strong&gt;1. Create an API endpoint for your app :&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;First you need to create and API endpoint that you can use to call the server from your app. One of the easiest way to do that is to use &lt;code class=&quot;highlighter-rouge&quot;&gt;flask&lt;/code&gt;. Here is simple code to do that :&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;app=Flask(__name__)
+@app.route('/api',methods=['POST'])
+def function(parameters):
+    
+    // do something
+    // return result as json
+    return jsonify(status='OK', results=answer)
+
+
+if __name__=='__main__':
+    app.run(host='0.0.0.0', port=3000)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Fire up terminal and executre - &lt;code class=&quot;highlighter-rouge&quot;&gt;python your_flask_app.py&lt;/code&gt;. This will start hosting your API on localhost. You can check it on - &lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost:3000&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h4 id=&quot;2-tunnel-localhost-to-public-url-&quot;&gt;&lt;strong&gt;2. Tunnel Localhost to Public URL :&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;Fire up another terminal and write this command : &lt;code class=&quot;highlighter-rouge&quot;&gt;ssh -R your_subdomain:80:localhost:3000 serveo.net&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Where:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;your_domain&lt;/code&gt; is the custom name you choose.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;localhost:3000&lt;/code&gt; is your localhost endpoint (remember to change port 3000 in case you’re running the API on different port).&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;80&lt;/code&gt; is the http port&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;serveo.net&lt;/code&gt; is the public domain.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;After executing this command, a url will be generated  -&lt;code class=&quot;highlighter-rouge&quot;&gt;your_subdomain.serveo.net&lt;/code&gt;, which will be the public endpoint of your localhost, you can use it to build the app. Do remember serveo will generate this url only when &lt;code class=&quot;highlighter-rouge&quot;&gt;your_subdomain&lt;/code&gt; is available, so choose some creative name.&lt;/p&gt;
+
+&lt;p&gt;And that’s it. With this simple two step you can host your project locally. This is big aid for me as my local PC has enough RAM for deploying model and I don’t need APP for long term purposes.&lt;/p&gt;</content><author><name>Ashutosh Chandra</name></author><category term="tech" /><summary type="html">In this blog I'll explain you why hosting projects locally is a better option, how to start server on localhost and generate public url with custom domain name.</summary></entry><entry><title type="html">Coding a Simple Logistic Regression in NumPy</title><link href="http://localhost:4000/artificial/2018/12/19/logistic-regression-in-numpy.html" rel="alternate" type="text/html" title="Coding a Simple Logistic Regression in NumPy" /><published>2018-12-19T00:00:00+05:30</published><updated>2018-12-19T00:00:00+05:30</updated><id>http://localhost:4000/artificial/2018/12/19/logistic-regression-in-numpy</id><content type="html" xml:base="http://localhost:4000/artificial/2018/12/19/logistic-regression-in-numpy.html">&lt;p&gt;How many times I got stuck in understanding weight dimensions and dot products and thought I’ll code Simple Logistic regression in NumPy and go through the basics. But everytime my Laziness stopped me doing so. But not this time.&lt;/p&gt;
+
+&lt;p&gt;Logistic Regression is the one of the most fundamental concept of neural nets. In the 1950s decade there was huge interest among researchers to mimic human brain for artificial intelligence. At that time first Logistic Regression model was implemented with linear activation. It was trained with simple logistic loss function and worked well for linear data but failed substantially for non-linear one - like the very famous &lt;strong&gt;XOR&lt;/strong&gt; gate problem.&lt;/p&gt;
+
+&lt;p&gt;Then in around 1980s came the concept of &lt;strong&gt;Gradient Descent&lt;/strong&gt; and &lt;strong&gt;non-linear activation&lt;/strong&gt;. This gained immense popularity at that time as the model started working for non linear data as well. Then came Backpropagation, ConvNets, RNNs which are now supported by immense computaion power and here we are with such explosion in Deep learning field. But it all started with &lt;strong&gt;Logistic Regression&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Logistic Regression is basically used for binary classification. It has two parts - &lt;strong&gt;forward pass&lt;/strong&gt; and &lt;strong&gt;backward pass&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;1-forward-pass&quot;&gt;1. Forward Pass:&lt;/h3&gt;
+&lt;p&gt;In the forward step you feed in multiple inputs, multiply it with corresponding weight vectors, add a bias vector and pass it through non-linear activation function (like &lt;em&gt;sigmoid&lt;/em&gt;) and you’ll get a probability between (0 - 1). The mathematical equation for the same is given as :&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;out = sigmoid( w1*x1 + w2*x2 + ... + w(n)*x(n) + b )&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;out = sigmoid( W&lt;sup&gt;T&lt;/sup&gt;.X + b)&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Here &lt;code class=&quot;highlighter-rouge&quot;&gt;x&lt;/code&gt; is input data and &lt;code class=&quot;highlighter-rouge&quot;&gt;out&lt;/code&gt; is the network output. Let’s say we have a dataset &lt;code class=&quot;highlighter-rouge&quot;&gt;(x,y)&lt;/code&gt; where &lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt;(correct label) correspnds to label for corresponding &lt;code class=&quot;highlighter-rouge&quot;&gt;x&lt;/code&gt; and we get &lt;code class=&quot;highlighter-rouge&quot;&gt;out&lt;/code&gt;(predicted label) from the network for the same x. Now we need to know how far is the predicted label from correct label. For that we define a loss function. In this case for keeping things simple let’s take mean square loss defined as :&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;L = 1/2(out-y)&lt;sup&gt;2&lt;/sup&gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;2-backward-pass&quot;&gt;2. Backward Pass:&lt;/h3&gt;
+&lt;p&gt;In the backward step we need to alter weights so that model starts predicting better than the last time. We know how the model performed on the last iteration by loss function, we just need to somehow encode this information and pass it backwards. We do this by means of &lt;code class=&quot;highlighter-rouge&quot;&gt;Gradient Descent&lt;/code&gt;.
+The loss function is parabolic as clear by the definition. So there exist a local minima for sure at which loss is minimum and model will perform the best. Gradients of any function tells the direction of steepest(maximum) increase. If we calculate the gradient of loss function and take negative of the value, that will give the direction of steepest decrease. But since gradients gives only direction, we multiply it by a constant &lt;code class=&quot;highlighter-rouge&quot;&gt;(learning rate)&lt;/code&gt;  to get a value that signifies how far should we go in that direction. Add this value to the weights of the network to alter them so as to move one step further down the loss function. We do this recursively until we reach the local minima and that is precisely the &lt;strong&gt;Gradient Descent Algorithm&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;For finding the gradient of loss function we take partail derivate of loss function with respect to weights of the network.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;∆L = (∂L(w1), ∂L(w2) ......), where ∂L(w1) = partial derivate of L with respect to w1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Let’s differentiate loss with repect to w1 :&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;∂L(w1) = (out-y)*out*(1-out)*x1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Where the term &lt;code class=&quot;highlighter-rouge&quot;&gt;out*(1-out)&lt;/code&gt; came because out is sigmoid activated function and derivative of sigmoid function is defined as :&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;∂(sigmoid(x)) = sigmoid(x)*(1-sigmoid(x))
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;In general :&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;∂L(w&lt;sub&gt;i&lt;/sub&gt;) = (out-y)*out*(1-out)*x&lt;sub&gt;i&lt;/sub&gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;So we alter weights as :&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;w&lt;sub&gt;i&lt;/sub&gt; = w&lt;sub&gt;i&lt;/sub&gt; - learning_rate * ∂L(w&lt;sub&gt;i&lt;/sub&gt;)&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Now with this much theoretical background we can’t most surely code logistic regression and test on different data. Let’s make a simple network for AND gate.&lt;/p&gt;
+
+&lt;h3 id=&quot;implementation&quot;&gt;&lt;strong&gt;Implementation:&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;The dataset for &lt;em&gt;AND&lt;/em&gt; gate is :&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;xdata=np.array([[0,0],[0,1],[1,0],[1,1]])
+ydata=np.array([[0],[0],[0],[1]])
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Defining helper functions :&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;def sigmoid(x):
+    return 1/(1+np.exp(-x))
+
+def sigmoid_derivative(x):
+    return x*(1-x)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Defining hyperparameters (parameter not trained by model but specified manually) :&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;input_neuron=2                      # number of inputs
+output_neuron=1                     # number of outputs
+etah=0.01                           # learning rate
+batch_size=1                        # number of example we'll show the network at once
+num_epoch=1000                      # how many times we'll loop over the data
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Define weights and biases:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;w=np.random.random(size=(input_neuron,))
+b=np.random.random(size=(output_neuron,))
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Main training code :&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;for epoch in range(num_epoch):
+    for x,y in zip(xdata,ydata):
+    
+        out=sigmoid(x.dot(w)+b)                              # forward pass
+        dw = (out-y)*sigmoid_derivative(out)                 # calculating derivative
+
+        for i in range(len(w)):                              # backward pass(weights)
+            w[i] = w[i] - etah*dw*x[i]                          
+        for i in range(len(b)):                              # backward pass(bias)
+            b[i] = b[i] - etah*dw                               
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;After running this code for &lt;code class=&quot;highlighter-rouge&quot;&gt;num_epoch&lt;/code&gt; times, the model will prefectly learn the weights.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;print(w,b)
+=&amp;gt; [2.64924114 2.6467143 ] [-4.09029157]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;As you can see when x1 and x2 both will be 1, then only &lt;code class=&quot;highlighter-rouge&quot;&gt;x1*w1+x2*w2&lt;/code&gt; will  be greater than bias and network will output 1 (hence AND gate).&lt;/p&gt;
+
+&lt;p&gt;You can find all the codes I used here, and in addition simple implementation for IRIS dataset as well on my &lt;a href=&quot;https://github.com/ashukid/Neural_Networks_using_Numpy&quot;&gt;Github&lt;/a&gt;&lt;/p&gt;</content><author><name>Ashutosh Chandra</name></author><category term="artificial" /><summary type="html">Logistic Regression is a fundamental concept to deep learning. In this blog I'm going to code a logistic regression with gradient descent algorithm from scratch in NumPy.</summary></entry><entry><title type="html">My experience of deploying keras/tensorflow model on Heroku</title><link href="http://localhost:4000/tech/2018/12/16/deploy-models-on-heroku.html" rel="alternate" type="text/html" title="My experience of deploying keras/tensorflow model on Heroku" /><published>2018-12-16T00:00:00+05:30</published><updated>2018-12-16T00:00:00+05:30</updated><id>http://localhost:4000/tech/2018/12/16/deploy-models-on-heroku</id><content type="html" xml:base="http://localhost:4000/tech/2018/12/16/deploy-models-on-heroku.html">&lt;blockquote&gt;
+  &lt;p&gt;Spoiler : Heroku is not good enough for deploying deep learning models, so go for GCP, AWS or DigitalOcean. If you want to know why and don’t believe me until you do it yourself go ahead and read full content.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This was the first time I was deploying a model and creating a REST api endpoint to call from my mobile app or flask app. I already used all my digital ocean credit and didn’t want to use GCP or AWS. So i went for &lt;strong&gt;Heroku&lt;/strong&gt;. I searched a lot whether we can deploy keras model on heroku or not, but didn’t get anything. So I went ahead and deployed my own model.&lt;/p&gt;
+
+&lt;p&gt;All the code snippets I use in this blog are on my &lt;a href=&quot;https://github.com/ashukid/Deploy-keras-model-on-Heroku/tree/master&quot;&gt;Github&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;1-creating-the-rest-api-endpoint&quot;&gt;&lt;strong&gt;1. Creating the REST Api endpoint&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;First let’s create a simple api endpoint and test it on local server. Go head and install &lt;code class=&quot;highlighter-rouge&quot;&gt;Flask&lt;/code&gt; first. Then create a file with name &lt;em&gt;main.py&lt;/em&gt; and insert the following piece of code.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1. app=Flask(__name__)
+2. @app.route('/api',methods=['POST'])
+3. def photoRecognize():
+
+4.    im=request.form['image']
+5.    im=unquote(im)
+6.    answer=getFlowerClass(im)
+7.    return jsonify(status='OK', results=answer)
+
+if __name__=='__main__':
+    app.run(host='0.0.0.0', port=3000)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;In the 1st line I simply defined app name. In the 2nd line I created a route on which I’ll make post request (If these things are unclear go through flask basics and then come back and read next). In 3rd line I defined the function &lt;em&gt;(photoRecognize)&lt;/em&gt; that will be called when we make request to the route. Inside the function I took the image (url encoded string, 4th line) that’ll be sent as POST request parameter. Then in 5th line url decoded the string and called the main function (&lt;em&gt;getFlowerClass&lt;/em&gt;) which will process the image and send me the class the flower as string, which will be returned as JSON. If you want to have a look at the function (&lt;em&gt;getFlowerClass&lt;/em&gt;) see my &lt;a href=&quot;https://github.com/ashukid/Deploy-keras-model-on-Heroku/tree/master&quot;&gt;Github&lt;/a&gt; page.&lt;/p&gt;
+
+&lt;h3 id=&quot;2-installing-heroku-cli&quot;&gt;&lt;strong&gt;2. Installing Heroku CLI&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;I’m a big fan of command line, so I’ll be doing everything from command line itself. Go ahead and install &lt;code class=&quot;highlighter-rouge&quot;&gt;Heroku CLI&lt;/code&gt;. Create a folder and put the file &lt;em&gt;main.py&lt;/em&gt; inside it. Open up terminal and navigate to the folder just created and execute the command &lt;code class=&quot;highlighter-rouge&quot;&gt;heroku create&lt;/code&gt;. This creates a heroku app and and will print something like :&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Creating app... done, ⬢ serene-caverns-82714
+https://abc-xyz-12345.herokuapp.com/ | https://git.heroku.com/abc-xyz-12345.git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;First https link is the domain name of the app and second one is the link of github repository. A remote with name heroku is also created. So &lt;code class=&quot;highlighter-rouge&quot;&gt;git init&lt;/code&gt; the folder and add the remote :&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git remote add heroku https://git.heroku.com/abc-xyz-12345.git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;3-configurations-for-heroku-app&quot;&gt;&lt;strong&gt;3. Configurations for Heroku App&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;Now is the time for adding configurations files for Heroku. Create following files in the same folder :&lt;/p&gt;
+
+&lt;h4 id=&quot;a-runtimetxt-&quot;&gt;A. runtime.txt :&lt;/h4&gt;
+&lt;p&gt;This file is used to specify the run time for the app and the specific version. In this case we’re using &lt;em&gt;python&lt;/em&gt; runtime environment. So add this line in the file :&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python-3.7.0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;b-requirementstxt-&quot;&gt;B. requirements.txt :&lt;/h4&gt;
+&lt;p&gt;Write down all the dependency of your app in this file like :&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Flask==1.0.2
+Keras==2.1.5
+tensorflow==1.7.0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Heroku will install all those dependencies at the time of deployment.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;NOTE : If you need OpenCV for your app, it has some dependencies that needs to be installed with apt. For that follow step C.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;c-aptfile-&quot;&gt;C. Aptfile :&lt;/h4&gt;
+&lt;p&gt;For all those dependencies that have to be installed with  &lt;code class=&quot;highlighter-rouge&quot;&gt;apt&lt;/code&gt;, first install herok-buildpack-apt with following command :&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;heroku buildpacks:add --index 1 https://github.com/heroku/heroku-buildpack-apt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Then create an &lt;code class=&quot;highlighter-rouge&quot;&gt;Aptfile&lt;/code&gt; and write down all those dependencies like :&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;libsm6
+libxrender1
+libfontconfig1
+libice6
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;These 4 dependencies are for OpenCV.&lt;/p&gt;
+
+&lt;h4 id=&quot;d-procfile-&quot;&gt;D. Procfile :&lt;/h4&gt;
+&lt;p&gt;This file tells Heroku what command to execute after app is deployed. In my case I wanted a web app, the file to run is &lt;code class=&quot;highlighter-rouge&quot;&gt;main.py&lt;/code&gt;, so my Procfile content was like this:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;web: gunicorn main:app --loga-file=-
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Gunicorn is Python Web Server Gateway Interface HTTP server. Go ahead and install it first.&lt;/p&gt;
+
+&lt;h3 id=&quot;4-deploying-the-app&quot;&gt;&lt;strong&gt;4. Deploying the App&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;Push all the codes to the repository.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git push heroku master
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This command will push all the codes, install all the requirements specified and release the 1st version of the app.
+Go ahead and run  &lt;code class=&quot;highlighter-rouge&quot;&gt;heroku open&lt;/code&gt; to run the app.&lt;/p&gt;
+
+&lt;p&gt;Since I was passing image as post request I had to use some app that can send post request to the endpoint. For that I used &lt;em&gt;Postman&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Everything worked till I sent the post request. The app was deployed properly, all the requirements was installed and app was running all well locally. So I expected it to work from heroku server as well. 
+But as soon as I requested the server - boom !! App crashed.
+I saw the logs (&lt;code class=&quot;highlighter-rouge&quot;&gt;heroku logs --tail&lt;/code&gt;), there I found sometimes &lt;em&gt;request timeour error&lt;/em&gt; and sometimes &lt;em&gt;memory limit exceeded error&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Here is the whole crush, heroku gives only &lt;strong&gt;30s&lt;/strong&gt; for one request and a total of &lt;strong&gt;500MB&lt;/strong&gt; of RAM. Both of them is insufficient for deep learning models as evaluation and processing takes more time as well as more memory .&lt;/p&gt;
+
+&lt;p&gt;Hence after a hard work of 2 days, I finally realised I’ve to buy credit on DigitalOcean or create account on GCP.&lt;/p&gt;</content><author><name>Ashutosh Chandra</name></author><category term="tech" /><summary type="html">This blog is for all those enthusiast who wants to deploy there deep learning models freely on Heroku without the hassle of Google cloud platform or Amazon web services.</summary></entry></feed>
