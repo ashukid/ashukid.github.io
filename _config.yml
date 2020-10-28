@@ -1,6 +1,6 @@
 title: Ashu's Blog
 author: Ashutosh Chandra
-email: irm2015001@iiita.ac.in
+email: ashutoshchandra.iiita@gmail.com
 description: Searching a battle worth fighting for !
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://ashukid.github.io"
@@ -18,9 +18,6 @@ collections:
     output: true
     permalink: /:categories/:year/:month/:day/:title.html
   philosophy:
-    output: true
-    permalink: /:categories/:year/:month/:day/:title.html
-  timeline:
     output: true
     permalink: /:categories/:year/:month/:day/:title.html
 
