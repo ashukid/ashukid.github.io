@@ -344,7 +344,7 @@ blockquote { padding: 0 0 0 30px; margin-bottom: 20px; font-size: 15px; border-l
 
 ul { list-style-position: inside; list-style: disc; padding-left: 20px; }
 
-ol { list-style-position: inside; list-style: decimal; padding-left: 3px; }
+ol { list-style-position: inside; list-style: decimal; padding-left: 20px; }
 
 dl dd { font-style: italic; font-weight: 100; }
 

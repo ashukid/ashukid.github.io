@@ -1,4 +1,54 @@
-.sass-cache
+# Jekyll
+_site/
+.sass-cache/
+.jekyll-cache/
 .jekyll-metadata
-Gemfile.lock
-.gitignore
+
+# Bundler
+vendor/bundle/
+.bundle/
+# Note: Gemfile.lock should be committed for consistent builds across environments
+
+# Backup files
+*.backup
+*.bak
+*.swp
+*.swo
+*~
+Gemfile.backup
+Gemfile.local
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+.project
+.classpath
+.settings/
+
+# Logs
+*.log
+
+# Environment variables
+.env
+.env.local
+
+# Node modules (if you add Node.js dependencies later)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Temporary files
+*.tmp
+*.temp

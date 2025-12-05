@@ -1,25 +1,10 @@
-title: Ashu's Blog
-author: Ashutosh Chandra
-email: ashutoshchandra.iiita@gmail.com
-description: Searching a battle worth fighting for !
+title: LazyInq
+author: Swastika mukherjee
+email: natuthakiscool@gmail.com
+description: I love ashutosh Chandra !!
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://ashukid.github.io"
-github_username:  ashukid
-
-
-collections:
-  artificial:
-    output: true
-    permalink: /:categories/:year/:month/:day/:title.html
-  tech:
-    output: true
-    permalink: /:categories/:year/:month/:day/:title.html
-  books:
-    output: true
-    permalink: /:categories/:year/:month/:day/:title.html
-  philosophy:
-    output: true
-    permalink: /:categories/:year/:month/:day/:title.html
+# github_username:  ashukid
 
 # Build settings
 markdown: kramdown
@@ -33,4 +18,8 @@ plugins:
 
 disqus:
   shortname: https-ashukid-github-io
+
+header_pages:
+  - blogs.md
+  - about.md
 
