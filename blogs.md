@@ -1,6 +1,5 @@
 ---
-layout: home
+layout: blogs
 permalink: /blogs/
 title: Blogs
-list_title: All Blogs
 ---

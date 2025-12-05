@@ -4,6 +4,7 @@ layout: post
 title: "Coding a Simple Logistic Regression in NumPy"
 excerpt: Logistic Regression is a fundamental concept to deep learning. In this blog I'm going to code a logistic regression with gradient descent algorithm from scratch in NumPy.
 date: 2018-12-19
+image: https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=500&fit=crop
 ---
 
 How many times I got stuck in understanding weight dimensions and dot products and thought I'll code Simple Logistic regression in NumPy and go through the basics. But everytime my Laziness stopped me doing so. But not this time.

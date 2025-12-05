@@ -4,6 +4,7 @@ layout: post
 title: "My experience of deploying keras/tensorflow model on Heroku"
 excerpt: This blog is for all those enthusiast who wants to deploy there deep learning models freely on Heroku without the hassle of Google cloud platform or Amazon web services.
 date: 2018-12-16
+image: https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=500&fit=crop
 ---
 
 > Spoiler : Heroku is not good enough for deploying deep learning models, so go for GCP, AWS or DigitalOcean. If you want to know why and don't believe me until you do it yourself go ahead and read full content.
