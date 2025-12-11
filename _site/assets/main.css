@@ -277,7 +277,7 @@ p, li { font-size: 1rem; }
 .blog-list-date { font-size: 0.85rem; color: #999; display: block; margin-top: auto; }
 
 /* Home about box */
-.home-about { background: #f8fafc; border: 1px solid #e5e7eb; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04); max-width: 780px; margin: 0 auto 2rem auto; }
+.home-about { background: #f8fafc; border: 1px solid #e5e7eb; border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04); max-width: 780px; margin: 0 auto 3.5rem auto; }
 .home-about p { margin-bottom: 1rem; }
 
 /* Home blogs section */
