@@ -22,7 +22,7 @@ h1, h2, h3, h4,
 
 .page-heading {
   text-align: center;
-  font-size: clamp(2.3rem, 3vw + 1rem, 3rem);
+  font-size: clamp(2.3rem, calc(3vw + 1rem), 3rem);
   line-height: 1.2;
   margin: 0 0 2.4rem 0;
 }
@@ -356,7 +356,7 @@ p, li {
 
   h2 {
     margin: 0;
-    font-size: clamp(1.9rem, 2vw + 1rem, 2.3rem);
+    font-size: clamp(1.9rem, calc(2vw + 1rem), 2.3rem);
   }
 
   .button {
