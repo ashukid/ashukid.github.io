@@ -29,5 +29,38 @@
   <path transform="scale(0.07)" fill="#FFF" d="M177.50984 80.077v60.94125h-24.14375v-59.15c0-12.46875-5.24625-18.7975-15.74-18.7975-11.6025 0-17.4175 7.5075-17.4175 22.3525v32.37625H96.20734V85.42325c0-14.845-5.81625-22.3525-17.41875-22.3525-10.49375 0-15.74 6.32875-15.74 18.7975v59.15H38.90484V80.077c0-12.455 3.17125-22.3525 9.54125-29.675 6.56875-7.3225 15.17125-11.07625 25.85-11.07625 12.355 0 21.71125 4.74875 27.8975 14.2475l6.01375 10.08125 6.015-10.08125c6.185-9.49875 15.54125-14.2475 27.8975-14.2475 10.6775 0 19.28 3.75375 25.85 11.07625 6.36875 7.3225 9.54 17.22 9.54 29.675"/>
 </symbol>
 
+<symbol id="gmail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="3" y="5" width="18" height="14" rx="2" ry="2"></rect>
+  <polyline points="3 7 12 13 21 7"></polyline>
+</symbol>
+
+<symbol id="home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M4 11.5 12 4l8 7.5"></path>
+  <path d="M5.5 10.5V20h13v-9.5"></path>
+  <path d="M10 20v-5h4v5"></path>
+</symbol>
+
+<symbol id="blog" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M5 4h9l5 5v11H5z"></path>
+  <path d="M14 4v5h5"></path>
+  <path d="M8 13h8M8 16h5"></path>
+</symbol>
+<symbol id="gmail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="3" y="5" width="18" height="14" rx="2" ry="2"></rect>
+  <polyline points="3 7 12 13 21 7"></polyline>
+</symbol>
+
+<symbol id="home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M4 11.5 12 4l8 7.5"></path>
+  <path d="M5.5 10.5V20h13v-9.5"></path>
+  <path d="M10 20v-5h4v5"></path>
+</symbol>
+
+<symbol id="blog" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M5 4h9l5 5v11H5z"></path>
+  <path d="M14 4v5h5"></path>
+  <path d="M8 13h8M8 16h5"></path>
+</symbol>
+
 
 </svg>

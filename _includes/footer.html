@@ -16,8 +16,19 @@
             {%- endif -%}
             </li>
             {%- if site.email -%}
-            <li><a class="u-email" href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+            <li>
+              <a class="u-email" href="mailto:{{ site.email }}">
+                <svg class="svg-icon"><use xlink:href="{{ '/assets/minima-social-icons.svg#gmail' | relative_url }}"></use></svg>
+                {{ site.email }}
+              </a>
+            </li>
             {%- endif -%}
+            <li>
+              <a href="https://www.linkedin.com/in/swastika-mukherjee-content-writer/" rel="me">
+                <svg class="svg-icon"><use xlink:href="{{ '/assets/minima-social-icons.svg#linkedin' | relative_url }}"></use></svg>
+                LinkedIn
+              </a>
+            </li>
         </ul>
       </div>
 

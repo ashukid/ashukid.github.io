@@ -1,240 +1,98 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-12-06T01:38:15+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">LazyInq</title><subtitle>I love ashutosh Chandra !!</subtitle><author><name>Swastika mukherjee</name></author><entry><title type="html">Coding a Simple Logistic Regression in NumPy</title><link href="http://localhost:4000/2018/12/19/logistic-regression-in-numpy.html" rel="alternate" type="text/html" title="Coding a Simple Logistic Regression in NumPy" /><published>2018-12-19T00:00:00+05:30</published><updated>2018-12-19T00:00:00+05:30</updated><id>http://localhost:4000/2018/12/19/logistic-regression-in-numpy</id><content type="html" xml:base="http://localhost:4000/2018/12/19/logistic-regression-in-numpy.html"><![CDATA[<p>How many times I got stuck in understanding weight dimensions and dot products and thought I’ll code Simple Logistic regression in NumPy and go through the basics. But everytime my Laziness stopped me doing so. But not this time.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-12-11T16:25:49+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">LazyInq</title><subtitle>I love ashutosh Chandra !!</subtitle><author><name>Swastika mukherjee</name></author><entry><title type="html">What they don’t tell you about downshifting</title><link href="http://localhost:4000/2025/12/11/what-they-dont-tell-you-about-downshifting.html" rel="alternate" type="text/html" title="What they don’t tell you about downshifting" /><published>2025-12-11T00:00:00+05:30</published><updated>2025-12-11T00:00:00+05:30</updated><id>http://localhost:4000/2025/12/11/what-they-dont-tell-you-about-downshifting</id><content type="html" xml:base="http://localhost:4000/2025/12/11/what-they-dont-tell-you-about-downshifting.html"><![CDATA[<p>“Being a downshifter has its ups and downs. It’s great to have free time to yourself but on the other hand you don’t earn much, and this creates a lot of frustration. You can’t afford to go anywhere nice. Not to mention you aren’t getting any recognition from society.”<br />
+— <em>Welcome to the Hyunam-Dong Bookshop</em></p>
 
-<p>Logistic Regression is the one of the most fundamental concept of neural nets. In the 1950s decade there was huge interest among researchers to mimic human brain for artificial intelligence. At that time first Logistic Regression model was implemented with linear activation. It was trained with simple logistic loss function and worked well for linear data but failed substantially for non-linear one - like the very famous <strong>XOR</strong> gate problem.</p>
+<p>I had a decent job; comfortable, easy, monotonous. Yet I felt more burnt out than I should have. A tiny little voice in my head urged me to leave it all and the city with it, but my bank account kept me in check. One day, the money just couldn’t make up for the stress of going into work. That’s when I decided to quit. At first, I had a solid plan that would soft launch me back into the same kind of work—with more money. That took an unwelcome detour which left me with no job, not many prospects, and absolutely no desire to return to the hustle.</p>
 
-<p>Then in around 1980s came the concept of <strong>Gradient Descent</strong> and <strong>non-linear activation</strong>. This gained immense popularity at that time as the model started working for non linear data as well. Then came Backpropagation, ConvNets, RNNs which are now supported by immense computaion power and here we are with such explosion in Deep learning field. But it all started with <strong>Logistic Regression</strong>.</p>
+<p>I found myself packing my bags and heading to the mountains for a hospitality gig that paid even less. Surely, if the pay was less, so would be the work. Living where people vacation sounded like a win. Right? Wrong. I put in more hours, struggled to adjust, and found even less time for myself. The dignity of labour is truly measured by how much “desk” your desk job truly entails. Reality was far removed from my expectations.</p>
 
-<p>Logistic Regression is basically used for binary classification. It has two parts - <strong>forward pass</strong> and <strong>backward pass</strong>.</p>
+<p><img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&amp;fit=crop&amp;w=1400&amp;q=80" alt="Quiet mountain road" /></p>
 
-<h3 id="1-forward-pass">1. Forward Pass:</h3>
+<h2 id="what-i-learnt-from-my-experience">What I learnt from my experience</h2>
 
-<p>In the forward step you feed in multiple inputs, multiply it with corresponding weight vectors, add a bias vector and pass it through non-linear activation function (like <em>sigmoid</em>) and you’ll get a probability between (0 - 1). The mathematical equation for the same is given as :</p>
+<h3 id="cutting-costs-isnt-pleasant">Cutting costs isn’t pleasant</h3>
 
-<p><code>out = sigmoid( w1*x1 + w2*x2 + ... + w(n)\*x(n) + b )</code></p>
+<p>Only someone who doesn’t worry about money can underestimate how much leverage it brings. It wasn’t just buying fewer things; it was the constant worry I wouldn’t have enough. I started going out less, stopped taking care of myself, and even stopped seeing friends as much.</p>
 
-<p><code>out = sigmoid( W<sup>T</sup>.X + b)</code></p>
+<h3 id="an-unforeseen-identity-crisis">An unforeseen identity crisis</h3>
 
-<p>Here <code class="language-plaintext highlighter-rouge">x</code> is input data and <code class="language-plaintext highlighter-rouge">out</code> is the network output. Let’s say we have a dataset <code class="language-plaintext highlighter-rouge">(x,y)</code> where <code class="language-plaintext highlighter-rouge">y</code>(correct label) correspnds to label for corresponding <code class="language-plaintext highlighter-rouge">x</code> and we get <code class="language-plaintext highlighter-rouge">out</code>(predicted label) from the network for the same x. Now we need to know how far is the predicted label from correct label. For that we define a loss function. In this case for keeping things simple let’s take mean square loss defined as :</p>
+<p>For so many of us, work defines who we are. When you meet someone new, “what do you do?” arrives fast. Going from corporate to a small role in hospitality was often met with suspicion and judgment, no matter how well people tried to hide it. We see ourselves through society’s lens—and what people think of us matters.</p>
 
-<p><code>L = 1/2(out-y)<sup>2</sup></code></p>
+<h3 id="personal-time-turned-out-to-be-a-myth">Personal time turned out to be a myth</h3>
 
-<h3 id="2-backward-pass">2. Backward Pass:</h3>
+<p>The whole point of choosing a simpler life was to invest more time in myself. The truth: your habits follow you. Mine were over-pleasing bosses, never saying no, and never feeling like I was doing enough. Even after quitting, I worked just as hard for much less and barely had time to unwind.</p>
 
-<p>In the backward step we need to alter weights so that model starts predicting better than the last time. We know how the model performed on the last iteration by loss function, we just need to somehow encode this information and pass it backwards. We do this by means of <code class="language-plaintext highlighter-rouge">Gradient Descent</code>.
-The loss function is parabolic as clear by the definition. So there exist a local minima for sure at which loss is minimum and model will perform the best. Gradients of any function tells the direction of steepest(maximum) increase. If we calculate the gradient of loss function and take negative of the value, that will give the direction of steepest decrease. But since gradients gives only direction, we multiply it by a constant <code class="language-plaintext highlighter-rouge">(learning rate)</code> to get a value that signifies how far should we go in that direction. Add this value to the weights of the network to alter them so as to move one step further down the loss function. We do this recursively until we reach the local minima and that is precisely the <strong>Gradient Descent Algorithm</strong>.</p>
+<h2 id="so-would-i-recommend-it">So would I recommend it?</h2>
 
-<p>For finding the gradient of loss function we take partail derivate of loss function with respect to weights of the network.</p>
+<p>Downshifting has its place. With flexible work and shifting values, more people are hopping in. Many report being happier and more fulfilled. But there are tradeoffs. Here’s what I would do differently:</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>∆L = (∂L(w1), ∂L(w2) ......), where ∂L(w1) = partial derivate of L with respect to w1
-</code></pre></div></div>
+<ul>
+  <li><strong>Have a plan.</strong> Build a small nest egg to get through the first few months comfortably. Uncertainty is built in; cash buys you breathing room.</li>
+  <li><strong>Choose an alternate path carefully.</strong> Know what burned you out. Pick work that avoids the same triggers—whether that’s physical, mental, or cultural.</li>
+  <li><strong>Test the waters.</strong> Ease into the new life. Try the new hobby or job without over-committing. It’s not about being the best; it’s about checking if it’s best for you.</li>
+</ul>
 
-<p>Let’s differentiate loss with repect to w1 :</p>
+<p>Just have an open mind. You may have exhausted other possibilities. It may work; it may not. You won’t know until you try. It is a risk, but the reward could be peace of mind and a more fulfilling life. Passing over a high-profile career doesn’t mean you’ve given up on hopes, dreams, or goals. It’s a respite to do things on your own timeline, without compromising your wellness.</p>]]></content><author><name>Swastika mukherjee</name></author><summary type="html"><![CDATA[Leaving the grind sounds freeing—until the money, identity, and habits you kept from your old job follow you into your “simple” life.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&amp;fit=crop&amp;w=1400&amp;q=80" /><media:content medium="image" url="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&amp;fit=crop&amp;w=1400&amp;q=80" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Broke but want to travel alone? — Here’s how</title><link href="http://localhost:4000/2025/12/04/broke-but-want-to-travel-alone.html" rel="alternate" type="text/html" title="Broke but want to travel alone? — Here’s how" /><published>2025-12-04T00:00:00+05:30</published><updated>2025-12-04T00:00:00+05:30</updated><id>http://localhost:4000/2025/12/04/broke-but-want-to-travel-alone</id><content type="html" xml:base="http://localhost:4000/2025/12/04/broke-but-want-to-travel-alone.html"><![CDATA[<p>“Travelling as a broke college student”, the idea may not be new to friends living overseas, but for someone raised in an Indian middle-class family, it can feel uncanny.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>∂L(w1) = (out-y)*out*(1-out)*x1
-</code></pre></div></div>
+<p>When I told my parents, as a 20-year-old not nearly fresh out of college, that I wanted to roam the streets of India, volunteer at hostels, and meet new people, they only had one thing to say: “but what for?”. Concern for safety aside, the idea of wandering aimlessly, even for a little while, does not sit well with brown parents. But my mind was made up. As I packed my bags and left behind the comfort of home and two upset parents, I was a ball of nerves—and excited.</p>
 
-<p>Where the term <code class="language-plaintext highlighter-rouge">out*(1-out)</code> came because out is sigmoid activated function and derivative of sigmoid function is defined as :</p>
+<p>If, like me, travelling the world is calling out to you but you don’t know where to begin, make this guide your best friend.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>∂(sigmoid(x)) = sigmoid(x)*(1-sigmoid(x))
-</code></pre></div></div>
+<p><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&amp;fit=crop&amp;w=1400&amp;q=80" alt="Sunrise over the ocean" /></p>
 
-<p>In general :</p>
+<h2 id="why-travel-solo">Why travel solo?</h2>
 
-<p><code>∂L(w<sub>i</sub>) = (out-y)_out_(1-out)\*x<sub>i</sub></code></p>
+<p>If you are new to the world of travel, going off on a solo adventure can be intimidating. Planning, logistics, and life’s plain unpredictability can definitely use some company. On the other hand, going solo may open up many otherwise-missed opportunities.</p>
 
-<p>So we alter weights as :</p>
+<p>When you travel alone, you live on your own schedule. Making impromptu plans is easier when you don’t have to account for another person. With this flexibility you can make better use of your resources, especially on a budget. Skip the fancy stay and put your money toward trying out an adventure sport or exploring the local cuisine instead.</p>
 
-<p><code>w<sub>i</sub> = w<sub>i</sub> - learning_rate \* ∂L(w<sub>i</sub>)</code></p>
+<p>Aside from the place itself, it’s the people that add the most colour to any trip. Travelling alone gives you a chance to mingle with new people, hear their stories, and sometimes even make friendships that last a lifetime. All this and more can make travelling solo worth your while.</p>
 
-<p>Now with this much theoretical background we can’t most surely code logistic regression and test on different data. Let’s make a simple network for AND gate.</p>
+<h2 id="what-could-go-wrong">What could go wrong?</h2>
 
-<h3 id="implementation"><strong>Implementation:</strong></h3>
+<p>It’s easy to get enchanted by the idea of being a nomad. But it’s not without its challenges. Be prepared.</p>
 
-<p>The dataset for <em>AND</em> gate is :</p>
+<h3 id="money-matters">Money matters</h3>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>xdata=np.array([[0,0],[0,1],[1,0],[1,1]])
-ydata=np.array([[0],[0],[0],[1]])
-</code></pre></div></div>
+<p>My new-found freedom came with a very empty pocket. Money can’t buy happiness, but it does buy the essentials (and some much-needed comforts) during travel. Plan your spend on food and transport, but also set aside funds for fun activities and emergencies.</p>
 
-<p>Defining helper functions :</p>
+<h3 id="meeting-new-people">Meeting new people</h3>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def sigmoid(x):
-    return 1/(1+np.exp(-x))
+<p>Even solo travellers need company. Introducing yourself can be daunting, especially if everyone already seems paired off. My mantra: “what’s there to lose?”. The worst they can say is no. Put yourself out there, offer snacks, or chime into the discussion—you might make a new friend.</p>
 
-def sigmoid_derivative(x):
-    return x*(1-x)
-</code></pre></div></div>
+<h3 id="unforeseen-roadblocks">Unforeseen roadblocks</h3>
 
-<p>Defining hyperparameters (parameter not trained by model but specified manually) :</p>
+<p>Missed a bus, lost a bag, or started feeling sick? It can feel like a disaster, but a backup plan, an emergency contact, and travel insurance go a long way. You can’t plan for everything, so stay calm and keep moving.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>input_neuron=2                      # number of inputs
-output_neuron=1                     # number of outputs
-etah=0.01                           # learning rate
-batch_size=1                        # number of example we'll show the network at once
-num_epoch=1000                      # how many times we'll loop over the data
-</code></pre></div></div>
+<h3 id="safety">Safety</h3>
 
-<p>Define weights and biases:</p>
+<p>Safety is the number one concern for solo travellers, especially women. Pick the right stay, share your whereabouts with someone, and travel in groups for hikes or treks. It can literally be a life saver.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>w=np.random.random(size=(input_neuron,))
-b=np.random.random(size=(output_neuron,))
-</code></pre></div></div>
+<h2 id="how-to-work-around-it">How to work around it</h2>
 
-<p>Main training code :</p>
+<p>Preparedness makes the difference. Here are simple ways to stay ahead of the odds and still have fun.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for epoch in range(num_epoch):
-    for x,y in zip(xdata,ydata):
+<p><img src="https://images.unsplash.com/photo-1473181488821-2d23949a045a?auto=format&amp;fit=crop&amp;w=1400&amp;q=80" alt="Budget travel notebook and coffee" /></p>
 
-        out=sigmoid(x.dot(w)+b)                              # forward pass
-        dw = (out-y)*sigmoid_derivative(out)                 # calculating derivative
+<h3 id="planning-and-spontaneity">Planning and spontaneity</h3>
 
-        for i in range(len(w)):                              # backward pass(weights)
-            w[i] = w[i] - etah*dw*x[i]
-        for i in range(len(b)):                              # backward pass(bias)
-            b[i] = b[i] - etah*dw
-</code></pre></div></div>
+<p>Good travel is an equal mix of planning and flexibility. Once you pick a destination, plan your itinerary. Access to medical facilities and good connectivity matter if you are staying longer. I like to look up cafes and hangs—they become regular haunts for travellers and are perfect places to find company.</p>
 
-<p>After running this code for <code class="language-plaintext highlighter-rouge">num_epoch</code> times, the model will prefectly learn the weights.</p>
+<h3 id="research-the-locality">Research the locality</h3>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>print(w,b)
-=&gt; [2.64924114 2.6467143 ] [-4.09029157]
-</code></pre></div></div>
+<p>Accustom yourself to local customs and traditions. Some countries dress more modestly. Knowing how to dress, eat, and behave so you don’t come off as rude (or get into trouble) makes your stay more pleasant.</p>
 
-<p>As you can see when x1 and x2 both will be 1, then only <code class="language-plaintext highlighter-rouge">x1*w1+x2*w2</code> will be greater than bias and network will output 1 (hence AND gate).</p>
+<h3 id="getting-the-best-deals">Getting the best deals</h3>
 
-<p>You can find all the codes I used here, and in addition simple implementation for IRIS dataset as well on my <a href="https://github.com/ashukid/Neural_Networks_using_Numpy">Github</a></p>]]></content><author><name>Swastika mukherjee</name></author><summary type="html"><![CDATA[Logistic Regression is a fundamental concept to deep learning. In this blog I'm going to code a logistic regression with gradient descent algorithm from scratch in NumPy.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&amp;h=500&amp;fit=crop" /><media:content medium="image" url="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&amp;h=500&amp;fit=crop" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">My experience of deploying keras/tensorflow model on Heroku</title><link href="http://localhost:4000/2018/12/16/deploy-models-on-heroku.html" rel="alternate" type="text/html" title="My experience of deploying keras/tensorflow model on Heroku" /><published>2018-12-16T00:00:00+05:30</published><updated>2018-12-16T00:00:00+05:30</updated><id>http://localhost:4000/2018/12/16/deploy-models-on-heroku</id><content type="html" xml:base="http://localhost:4000/2018/12/16/deploy-models-on-heroku.html"><![CDATA[<blockquote>
-  <p>Spoiler : Heroku is not good enough for deploying deep learning models, so go for GCP, AWS or DigitalOcean. If you want to know why and don’t believe me until you do it yourself go ahead and read full content.</p>
-</blockquote>
+<p>Extra cash always helps on the road. Book stays and flights 2–3 months in advance for better prices, especially in peak season. Turn on price alerts. If your schedule is flexible, travel off-season. Use comparison sites like Google Flights, Kayak, or Skyscanner. To stretch your budget, consider hostels with shared dorms.</p>
 
-<p>This was the first time I was deploying a model and creating a REST api endpoint to call from my mobile app or flask app. I already used all my digital ocean credit and didn’t want to use GCP or AWS. So i went for <strong>Heroku</strong>. I searched a lot whether we can deploy keras model on heroku or not, but didn’t get anything. So I went ahead and deployed my own model.</p>
+<h3 id="budget-calculator">Budget calculator</h3>
 
-<p>All the code snippets I use in this blog are on my <a href="https://github.com/ashukid/Deploy-keras-model-on-Heroku/tree/master">Github</a></p>
+<p>Use a simple budget calculator. List one-time expenses (airfare, transport) and daily expenses (stay, food, entertainment). Break down your total budget and allocate a percentage to each based on local rates. Free online travel budget calculators can split expenses with friends, track savings, and convert currencies.</p>
 
-<h3 id="1-creating-the-rest-api-endpoint"><strong>1. Creating the REST Api endpoint</strong></h3>
+<h3 id="airfare-hacks">Airfare hacks</h3>
 
-<p>First let’s create a simple api endpoint and test it on local server. Go head and install <code class="language-plaintext highlighter-rouge">Flask</code> first. Then create a file with name <em>main.py</em> and insert the following piece of code.</p>
+<p>Book one-way tickets to mix airlines and pick the cheapest legs. Flying Monday–Wednesday is often cheaper than weekends. If you have multiple airports nearby, try the smaller ones. Book with a credit card to earn miles and deals. Unbooked seats sometimes get upgraded—ask with confidence.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. app=Flask(__name__)
-2. @app.route('/api',methods=['POST'])
-3. def photoRecognize():
+<h2 id="but-most-importantly">But most importantly…</h2>
 
-4.    im=request.form['image']
-5.    im=unquote(im)
-6.    answer=getFlowerClass(im)
-7.    return jsonify(status='OK', results=answer)
-
-if __name__=='__main__':
-    app.run(host='0.0.0.0', port=3000)
-</code></pre></div></div>
-
-<p>In the 1st line I simply defined app name. In the 2nd line I created a route on which I’ll make post request (If these things are unclear go through flask basics and then come back and read next). In 3rd line I defined the function <em>(photoRecognize)</em> that will be called when we make request to the route. Inside the function I took the image (url encoded string, 4th line) that’ll be sent as POST request parameter. Then in 5th line url decoded the string and called the main function (<em>getFlowerClass</em>) which will process the image and send me the class the flower as string, which will be returned as JSON. If you want to have a look at the function (<em>getFlowerClass</em>) see my <a href="https://github.com/ashukid/Deploy-keras-model-on-Heroku/tree/master">Github</a> page.</p>
-
-<h3 id="2-installing-heroku-cli"><strong>2. Installing Heroku CLI</strong></h3>
-
-<p>I’m a big fan of command line, so I’ll be doing everything from command line itself. Go ahead and install <code class="language-plaintext highlighter-rouge">Heroku CLI</code>. Create a folder and put the file <em>main.py</em> inside it. Open up terminal and navigate to the folder just created and execute the command <code class="language-plaintext highlighter-rouge">heroku create</code>. This creates a heroku app and and will print something like :</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Creating app... done, ⬢ serene-caverns-82714
-https://abc-xyz-12345.herokuapp.com/ | https://git.heroku.com/abc-xyz-12345.git
-</code></pre></div></div>
-
-<p>First https link is the domain name of the app and second one is the link of github repository. A remote with name heroku is also created. So <code class="language-plaintext highlighter-rouge">git init</code> the folder and add the remote :</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git remote add heroku https://git.heroku.com/abc-xyz-12345.git
-</code></pre></div></div>
-
-<h3 id="3-configurations-for-heroku-app"><strong>3. Configurations for Heroku App</strong></h3>
-
-<p>Now is the time for adding configurations files for Heroku. Create following files in the same folder :</p>
-
-<h4 id="a-runtimetxt-">A. runtime.txt :</h4>
-
-<p>This file is used to specify the run time for the app and the specific version. In this case we’re using <em>python</em> runtime environment. So add this line in the file :</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python-3.7.0
-</code></pre></div></div>
-
-<h4 id="b-requirementstxt-">B. requirements.txt :</h4>
-
-<p>Write down all the dependency of your app in this file like :</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Flask==1.0.2
-Keras==2.1.5
-tensorflow==1.7.0
-</code></pre></div></div>
-
-<p>Heroku will install all those dependencies at the time of deployment.</p>
-
-<blockquote>
-  <p>NOTE : If you need OpenCV for your app, it has some dependencies that needs to be installed with apt. For that follow step C.</p>
-</blockquote>
-
-<h4 id="c-aptfile-">C. Aptfile :</h4>
-
-<p>For all those dependencies that have to be installed with <code class="language-plaintext highlighter-rouge">apt</code>, first install herok-buildpack-apt with following command :</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>heroku buildpacks:add --index 1 https://github.com/heroku/heroku-buildpack-apt
-</code></pre></div></div>
-
-<p>Then create an <code class="language-plaintext highlighter-rouge">Aptfile</code> and write down all those dependencies like :</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>libsm6
-libxrender1
-libfontconfig1
-libice6
-</code></pre></div></div>
-
-<p>These 4 dependencies are for OpenCV.</p>
-
-<h4 id="d-procfile-">D. Procfile :</h4>
-
-<p>This file tells Heroku what command to execute after app is deployed. In my case I wanted a web app, the file to run is <code class="language-plaintext highlighter-rouge">main.py</code>, so my Procfile content was like this:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>web: gunicorn main:app --loga-file=-
-</code></pre></div></div>
-
-<p>Gunicorn is Python Web Server Gateway Interface HTTP server. Go ahead and install it first.</p>
-
-<h3 id="4-deploying-the-app"><strong>4. Deploying the App</strong></h3>
-
-<p>Push all the codes to the repository.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push heroku master
-</code></pre></div></div>
-
-<p>This command will push all the codes, install all the requirements specified and release the 1st version of the app.
-Go ahead and run <code class="language-plaintext highlighter-rouge">heroku open</code> to run the app.</p>
-
-<p>Since I was passing image as post request I had to use some app that can send post request to the endpoint. For that I used <em>Postman</em>.</p>
-
-<p>Everything worked till I sent the post request. The app was deployed properly, all the requirements was installed and app was running all well locally. So I expected it to work from heroku server as well.
-But as soon as I requested the server - boom !! App crashed.
-I saw the logs (<code class="language-plaintext highlighter-rouge">heroku logs --tail</code>), there I found sometimes <em>request timeour error</em> and sometimes <em>memory limit exceeded error</em>.</p>
-
-<p>Here is the whole crush, heroku gives only <strong>30s</strong> for one request and a total of <strong>500MB</strong> of RAM. Both of them is insufficient for deep learning models as evaluation and processing takes more time as well as more memory .</p>
-
-<p>Hence after a hard work of 2 days, I finally realised I’ve to buy credit on DigitalOcean or create account on GCP.</p>]]></content><author><name>Swastika mukherjee</name></author><summary type="html"><![CDATA[This blog is for all those enthusiast who wants to deploy there deep learning models freely on Heroku without the hassle of Google cloud platform or Amazon web services.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&amp;h=500&amp;fit=crop" /><media:content medium="image" url="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&amp;h=500&amp;fit=crop" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Next Generation Artificial Intelligence</title><link href="http://localhost:4000/2018/12/01/next-generation-ai.html" rel="alternate" type="text/html" title="Next Generation Artificial Intelligence" /><published>2018-12-01T00:00:00+05:30</published><updated>2018-12-01T00:00:00+05:30</updated><id>http://localhost:4000/2018/12/01/next-generation-ai</id><content type="html" xml:base="http://localhost:4000/2018/12/01/next-generation-ai.html"><![CDATA[<p>I was experimenting with different GAN models (Generative Adversarial Networks, if you don’t know) from a while and all the time I was feeling, this time I’m not teaching a machine how to do things, this time I’m asking a machine to be creative, like after showing some pictures asking it to generate similar pictures. (I’ll explain this in a while). It’s like telling a painter to paint something similar to landscape images, or telling a singer to sing similar to Ed Sheeran (off course we’ve to tell him first how landscape looks like or how Ed Sheeran voice sounds like). All this classification of cat and dog, stock prediction regression task, all that seems a decade ago work, even though it’s not. Now with the advancement in Reinforcement Learning and GAN we’ve come to next generation of AI.</p>
-
-<p>So let’s dive deeper to understand GAN first. GAN is based on three concepts -</p>
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"> <span class="no">Generative</span><span class="p">,</span> <span class="no">Adversarial</span> <span class="n">and</span> <span class="no">Networks</span> </code></pre></figure>
-
-<p>So let’s begin with Network first.</p>
-
-<p>Basically the network here means a <b>multilayer perceptron network</b> , though we use more advanced architecture, but for now let’s keep it simple. So there are two networks, Discriminator and Generator. Consider we’ve a cat image dataset (28 _ 28 ) and a function that generates uniform noise of given shape (let’s say 1 _ 100). So we give this uniform noise to the Generator and it’ll generate a 28 * 28 image from the noise. Let’s call it fake image (initially it’ll be just random noise). So we’ve real image from the cat dataset and fake image from the Generator, now we’ll challenge the Discriminator to tell which one is real image. Obviously in the start Discriminator will easily distinguish between both, but here is the nice concept. From the response of Discriminator, Generator network will alter its weights.You can think of it like Discriminator is telling you the probability of an image to be a real image. So initially it’ll be around 1 for real image and 0 for fake image. So we’ll take the difference and give it to the Generator, therefore the Generator will know how far it is from generating images like real ones and alter it’s weights accordingly.</p>
-
-<p>Here comes the concept of Adversarial. Adversarial basically means a situation involving <b>opposition or conflicts</b>. If you look deeper you’ll see that’s exactly what happening. While Discriminator has to differentiate between real and fake image, Generator is trying to Generate images, that is similar to real image so that Discriminator can no more distinguish between them. That is Generator is just trying to fool the Discriminator while the Discriminator is trying not to get fooled (hence conflict). You can visualise the Generator as forger and Discriminator as Detective.</p>
-
-<p><img src="/assets/gan1.png" alt="My helpful screenshot" /></p>
-
-<p>So once you train the two networks enough that the Discriminator is no more able to distinguish between real and fake image, giving probability of 0.5 for each image(optimal condition), that means Generator is generating as good image as the real one. But since the generated images comes from a random noise (that 1*100), no matter how much similar the image would be from the real one, it’ll be a unique image. Hence essentially the Generator is generating brand new images, and hence the word <b>Generative</b>.</p>
-
-<p>So now we’ve a nicer concept of GAN, let me explain what I mean by Next Generation AI. If you see what have we done so far, you’ll notice we’ve just given senses to the machine. Like classifying images and localising the objects (eyes), classifying music (ears), in the robotics field you can push a robot and it’ll be not fall (touch) etc. Although we’re still lacking here with smell and taste.</p>
-
-<p>Now with GAN we’re giving the machine <b>imaginative power</b>. It sounds like a sixth sense for a machine. We can let the machine see some images, and then we’re asking it to generate new unique images, to go in a imaginative world, create and carve new images, something very unique and very realistic as well. Although technically there is actually no imagination here, but looking from outside it does seem so.</p>
-
-<p>With the advancement in GAN we can do hell lot of things, like you can generate new music (yes you can be a good composer with bad taste, although there are many in the industry), you can be a good painter without touching brushes. You might be thinking how is this different from copying, and here it is. While copying things we actually don’t think anything. We just join separate parts (like copying assignment from different friends). But with GAN we can create brand new things. Although all these is not possible yet, but if we can think of them, then we can definitely make it possible.</p>
-
-<p>I would love to end my article by mentioning honourable comment from Yann LeCun (father of CNN if you don’t know) about GAN -</p>
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="s2">"the most interesting idea in the last 10 years of ML"</span> </code></pre></figure>
-<p>.</p>
-
-<p><img src="/assets/gan2.png" alt="My helpful screenshot" /></p>]]></content><author><name>Swastika mukherjee</name></author><summary type="html"><![CDATA[In this blog I want to give a brief idea about Generative Adversarial Networks and there possible scopes. This is going to be a very short one.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&amp;h=500&amp;fit=crop" /><media:content medium="image" url="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&amp;h=500&amp;fit=crop" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+<p>When I first stepped out, I over-planned everything. Over time I realised it’s best not to get too caught up in the details once the basics are covered. Listen to your gut, ask for help when you need it, and if you run out of ideas, come back to this guide. You’re there to have fun—and that’s one detail you should never forget. Happy travels!</p>]]></content><author><name>Swastika mukherjee</name></author><summary type="html"><![CDATA[Travelling on a student budget can work if you plan, stay flexible, and use a few simple money and safety habits.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" /><media:content medium="image" url="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
