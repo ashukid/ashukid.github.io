@@ -7,6 +7,43 @@ layout: default
     <h1 class="page-heading">{{ page.title }}</h1>
   {%- endif -%}
 
-  {{ content }}
+  <section class="home-about">
+    {{ content }}
+  </section>
+
+  <section class="home-blogs">
+    <div class="home-blogs-header">
+      <h2>Recent Blogs</h2>
+      <a class="button" href="{{ '/blogs/' | relative_url }}">View all</a>
+    </div>
+
+    {%- if site.posts.size > 0 -%}
+      <div class="blog-grid">
+        {%- for post in site.posts limit:3 -%}
+        <a href="{{ post.url | relative_url }}" class="blog-card">
+          <div class="blog-card-image">
+            {%- if post.image -%}
+              <img src="{{ post.image }}" alt="{{ post.title | escape }}" loading="lazy">
+            {%- else -%}
+              <div class="blog-card-placeholder">✦</div>
+            {%- endif -%}
+          </div>
+          <div class="blog-card-content">
+            <h3 class="blog-card-title">{{ post.title | escape }}</h3>
+            {%- if post.excerpt -%}
+              <p class="blog-card-excerpt">{{ post.excerpt | strip_html | truncatewords: 26 }}</p>
+            {%- endif -%}
+            <div class="blog-card-meta">
+              <span class="blog-card-date">
+                {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+                {{ post.date | date: date_format }}
+              </span>
+            </div>
+          </div>
+        </a>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </section>
 
 </div>

@@ -8,27 +8,20 @@
     <div class="footer-col-wrapper">
       <div class="footer-col footer-col-1">
         <ul class="contact-list">
-          <li class="p-name">
-            {%- if site.author -%}
-              {{ site.author | escape }}
-            {%- else -%}
-              {{ site.title | escape }}
-            {%- endif -%}
-            </li>
+          <li class="p-name">Contact me</li>
+          <li class="footer-icons">
             {%- if site.email -%}
-            <li>
-              <a class="u-email" href="mailto:{{ site.email }}">
-                <svg class="svg-icon"><use xlink:href="{{ '/assets/minima-social-icons.svg#gmail' | relative_url }}"></use></svg>
-                {{ site.email }}
-              </a>
-            </li>
+            <a class="u-email" href="mailto:{{ site.email }}" aria-label="Email">
+              <svg class="svg-icon"><use xlink:href="{{ '/assets/minima-social-icons.svg#gmail' | relative_url }}"></use></svg>
+            </a>
             {%- endif -%}
-            <li>
-              <a href="https://www.linkedin.com/in/swastika-mukherjee-content-writer/" rel="me">
-                <svg class="svg-icon"><use xlink:href="{{ '/assets/minima-social-icons.svg#linkedin' | relative_url }}"></use></svg>
-                LinkedIn
-              </a>
-            </li>
+            <a href="https://www.linkedin.com/in/swastika-mukherjee-content-writer/" rel="me" aria-label="LinkedIn">
+              <svg class="svg-icon"><use xlink:href="{{ '/assets/minima-social-icons.svg#linkedin' | relative_url }}"></use></svg>
+            </a>
+            <a href="https://medium.com/@natuthakiscool" rel="me" aria-label="Medium">
+              <svg class="svg-icon"><use xlink:href="{{ '/assets/minima-social-icons.svg#medium' | relative_url }}"></use></svg>
+            </a>
+          </li>
         </ul>
       </div>
 
