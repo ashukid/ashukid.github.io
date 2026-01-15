@@ -12,8 +12,8 @@ theme: jekyll-theme-architect
 plugins:
   - jekyll-feed
 
-disqus:
-  shortname: https-ashukid-github-io
+# disqus:
+#   shortname: https-ashukid-github-io
 
 header_pages:
   - blogs.md
