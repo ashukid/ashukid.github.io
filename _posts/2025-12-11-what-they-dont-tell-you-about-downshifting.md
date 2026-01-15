@@ -7,6 +7,9 @@ date: 2025-12-11
 image: https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=80
 ---
 
+
+![Quiet mountain road](https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1400&q=80)
+
 “Being a downshifter has its ups and downs. It’s great to have free time to yourself but on the other hand you don’t earn much, and this creates a lot of frustration. You can’t afford to go anywhere nice. Not to mention you aren’t getting any recognition from society.”  
 — _Welcome to the Hyunam-Dong Bookshop_
 
@@ -14,7 +17,6 @@ I had a decent job; comfortable, easy, monotonous. Yet I felt more burnt out tha
 
 I found myself packing my bags and heading to the mountains for a hospitality gig that paid even less. Surely, if the pay was less, so would be the work. Living where people vacation sounded like a win. Right? Wrong. I put in more hours, struggled to adjust, and found even less time for myself. The dignity of labour is truly measured by how much “desk” your desk job truly entails. Reality was far removed from my expectations.
 
-![Quiet mountain road](https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1400&q=80)
 
 ## What I learnt from my experience
 
