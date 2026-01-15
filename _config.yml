@@ -12,10 +12,6 @@ theme: jekyll-theme-architect
 plugins:
   - jekyll-feed
 
-plugins:
-  - jekyll-feed
-  # - jekyll-seo-tag
-
 disqus:
   shortname: https-ashukid-github-io
 
