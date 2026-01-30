@@ -10,14 +10,18 @@ image: https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&
 ![Sunrise over the ocean](https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=80)
 
 “Travelling as a broke college student”, the idea may not be new to our friends living overseas, but for someone having grown up in an Indian middle-class family, it may as well be uncanny.
-When I told my parents, as a 20 year old, not nearly fresh out of college, that I wanted to roam the streets of India, volunteer at hostels and meet new people, they only had one thing to say; ‘but what for?’. Concern for safety aside, the idea of wandering aimlessly, even for a little while does not sit well with brown parents. But as fresh young blood would have it, my mind was made up. As I packed my bags and left behind the comfort of home and two upset parents, I was a ball of nerves. But most of all, I was excited.
+
+When I told my parents, as a 20 year old, not nearly fresh out of college, that I wanted to roam the streets of India, volunteer at hostels and meet new people, they only had one thing to say; ‘but what for?’. Concern for safety aside, the idea of wandering aimlessly, even for a little while does not sit well with brown parents. But as fresh young blood would have it, my mind was made up. As I packed my bags and left behind the comfort of home and two upset parents, I was a ball of nerves. But most of all, I was 
+
 If, like me, travelling the world is also calling out to you but you don’t know where to begin, make this guide your best friend.
 
 
 ## Why travel solo?
 
 If you are new to the world of travel, going off on a solo adventure can be intimidating. Planning, logistics and life’s plain unpredictability can definitely use some company. On the other hand, in my experience, going solo may open up many otherwise-missed opportunities.
+
 When you travel alone, you get to live on your own schedule. Making impromptu plans is easier when you don’t have to account for another person. And you never know when you may need to change them on the go. With this flexibility you may also be able to make better use of your resources, especially when on a budget. Say, you’re the type of gal who just needs a clean bed and four walls to fall asleep. Stave off on that fancy stay and put your money towards trying out an adventure sport or exploring the local cuisine instead.
+
 Aside from the place itself, it’s the people that add the most colour to any trip. An advantage of travelling alone is that it gives you a chance to mingle with new people, hear their stories and sometimes even make friendships that last a lifetime. All this and more can make travelling solo worth your while.
 
 ## What could go wrong?
