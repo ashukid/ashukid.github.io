@@ -7,7 +7,6 @@ date: 2025-12-04
 image: https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80
 ---
 
-![Sunrise over the ocean](https://images.unsplash.com/photo-1707344088547-3cf7cea5ca49?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)
 
 “Travelling as a broke college student”, the idea may not be new to our friends living overseas, but for someone having grown up in an Indian middle-class family, it may as well be uncanny.
 
@@ -15,6 +14,7 @@ When I told my parents, as a 20 year old, not nearly fresh out of college, that 
 
 If, like me, travelling the world is also calling out to you but you don’t know where to begin, make this guide your best friend.
 
+![Sunrise over the ocean](https://images.unsplash.com/photo-1707344088547-3cf7cea5ca49?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)
 
 ## Why travel solo?
 
@@ -30,7 +30,10 @@ It’s easy to get enchanted by the idea of being a nomad. But it’s not withou
 
 ### Money matters
 
+
 When I first set off on my journey, as good as I felt about it, I had another thing coming. My new found freedom had come with a very empty pocket. Something I would become painfully aware of as time went by. And it may be true for some things that money can’t buy you happiness, it can afford you many essentials (and, some much need luxuries) during travel.
+
+![Sunrise over the ocean](https://images.unsplash.com/photo-1459257831348-f0cdd359235f?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)
 
 If you are on a budget, it is very important to spend some time anticipating and planning your expenditures. Some basics like food and transport are obvious contenders, but accounting for fun and leisure activities that you intend to do as well as emergency funds for unforeseen situations is always wise.
 
@@ -41,6 +44,8 @@ Almost everyone needs company. That stands true for solo travellers as well. Eve
 What’s the worse that could happen if you put yourself out there? The most they could say is no. Then you try your luck again. But if you didn’t try you’d never know. So don’t hesitate to introduce yourself, or offer your plate of snacks or even chime into the discussion every once in a while and see where that takes you.
 
 ### Unforeseen roadblocks
+
+![Sunrise over the ocean](https://images.unsplash.com/photo-1705158698950-85f0882d8bb6?q=80&w=2148&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)
 
 Say you missed a bus, lost a bag or started to feel a flu coming on in a place where you barely know anyone- would you fall apart? It may feel like a world-ending disaster in that moment, but it can be easily managed if you are prepared for it. Having a back up plan, an emergency contact, and a trustee travel insurance can go a long way in exactly such situations.
 
@@ -53,6 +58,8 @@ Safety is probably the number one concern for solo travellers. And more so for w
 ## How to work around it
 
 The significance of being prepared cannot be overstated. Knowing where to start can be challenging. There are some simple and easy ways you can prepare against odds and make sure that you make the most of your experience.
+
+![Sunrise over the ocean](https://images.unsplash.com/photo-1522199710521-72d69614c702?q=80&w=2372&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)
 
 
 ### Planning and spontaneity
