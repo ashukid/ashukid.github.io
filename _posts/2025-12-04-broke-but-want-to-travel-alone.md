@@ -7,11 +7,11 @@ date: 2025-12-04
 image: https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80
 ---
 
-![Sunrise over the ocean](https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=80)
+![Sunrise over the ocean](https://images.unsplash.com/photo-1707344088547-3cf7cea5ca49?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)
 
 “Travelling as a broke college student”, the idea may not be new to our friends living overseas, but for someone having grown up in an Indian middle-class family, it may as well be uncanny.
 
-When I told my parents, as a 20 year old, not nearly fresh out of college, that I wanted to roam the streets of India, volunteer at hostels and meet new people, they only had one thing to say; ‘but what for?’. Concern for safety aside, the idea of wandering aimlessly, even for a little while does not sit well with brown parents. But as fresh young blood would have it, my mind was made up. As I packed my bags and left behind the comfort of home and two upset parents, I was a ball of nerves. But most of all, I was 
+When I told my parents, as a 20 year old, not nearly fresh out of college, that I wanted to roam the streets of India, volunteer at hostels and meet new people, they only had one thing to say; ‘but what for?’. Concern for safety aside, the idea of wandering aimlessly, even for a little while does not sit well with brown parents. But as fresh young blood would have it, my mind was made up. As I packed my bags and left behind the comfort of home and two upset parents, I was a ball of nerves. But most of all, I was excited.
 
 If, like me, travelling the world is also calling out to you but you don’t know where to begin, make this guide your best friend.
 
