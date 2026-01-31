@@ -14,7 +14,7 @@ When I told my parents, as a 20 year old, not nearly fresh out of college, that 
 
 If, like me, travelling the world is also calling out to you but you don’t know where to begin, make this guide your best friend.
 
-![Sunrise over the ocean](https://images.unsplash.com/photo-1707344088547-3cf7cea5ca49?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)
+![Sunrise](https://images.unsplash.com/photo-1707344088547-3cf7cea5ca49?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)
 
 ## Why travel solo?
 
@@ -33,7 +33,7 @@ It’s easy to get enchanted by the idea of being a nomad. But it’s not withou
 
 When I first set off on my journey, as good as I felt about it, I had another thing coming. My new found freedom had come with a very empty pocket. Something I would become painfully aware of as time went by. And it may be true for some things that money can’t buy you happiness, it can afford you many essentials (and, some much need luxuries) during travel.
 
-![Sunrise over the ocean](https://images.unsplash.com/photo-1459257831348-f0cdd359235f?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)
+![Money](https://images.unsplash.com/photo-1459257831348-f0cdd359235f?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)
 
 If you are on a budget, it is very important to spend some time anticipating and planning your expenditures. Some basics like food and transport are obvious contenders, but accounting for fun and leisure activities that you intend to do as well as emergency funds for unforeseen situations is always wise.
 
@@ -45,7 +45,7 @@ What’s the worse that could happen if you put yourself out there? The most the
 
 ### Unforeseen roadblocks
 
-![Sunrise over the ocean](https://images.unsplash.com/photo-1705158698950-85f0882d8bb6?q=80&w=2148&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)
+![Roadblocks](https://images.unsplash.com/photo-1705158698950-85f0882d8bb6?q=80&w=2148&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)
 
 Say you missed a bus, lost a bag or started to feel a flu coming on in a place where you barely know anyone- would you fall apart? It may feel like a world-ending disaster in that moment, but it can be easily managed if you are prepared for it. Having a back up plan, an emergency contact, and a trustee travel insurance can go a long way in exactly such situations.
 
@@ -59,7 +59,7 @@ Safety is probably the number one concern for solo travellers. And more so for w
 
 The significance of being prepared cannot be overstated. Knowing where to start can be challenging. There are some simple and easy ways you can prepare against odds and make sure that you make the most of your experience.
 
-![Sunrise over the ocean](https://images.unsplash.com/photo-1522199710521-72d69614c702?q=80&w=2372&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)
+![Workaround](https://images.unsplash.com/photo-1522199710521-72d69614c702?q=80&w=2372&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)
 
 
 ### Planning and spontaneity
@@ -73,6 +73,9 @@ Personally, I prefer looking up good cafes and hangs when deciding on a city to 
 If you are travelling abroad or even otherwise, it can be extremely helpful to accustom yourself to the local customs and traditions of the place. For example, there are some countries where people dress more modestly than the rest of the world. Knowing how to dress, eat, and behave so as to not come off rude or get in trouble can make your stay more pleasant and effortless.
 
 ### Getting the best deals
+
+![Deals](https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?q=80&w=2372&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)
+
 
 A seasoned traveller knows that extra cash will always come in handy on the road. That’s why shaving off on unnecessary expenses can be a big plus. Booking stays and flights at least 2–3 months in advance ensures that you get a better deal, especially if you are planning to visit during peak season. Turning on price alerts is another easy hack. If you aren’t travelling on a time constraint, you may consider doing it during the off season. It can make huge difference if you’re travelling to popular tourist destinations.
 
