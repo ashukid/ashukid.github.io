@@ -8,8 +8,9 @@
 /* Typography reset */
 body {
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  line-height: 1.7;
+  line-height: 1.75;
   color: #0f172a;
+  font-size: 18px;
 }
 
 h1, h2, h3, h4,
@@ -41,10 +42,10 @@ p, li {
 
 /* Header styling */
 .site-header {
-  background: linear-gradient(135deg, #0f172a 0%, #111827 60%, #0b1224 100%);
+  background: #ffffff;
   border-top: 0;
-  border-bottom: 0;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  border-bottom: 1px solid #e5e7eb;
+  box-shadow: 0 1px 0 rgba(15, 23, 42, 0.04);
 }
 
 .site-header .wrapper {
@@ -56,7 +57,7 @@ p, li {
 
 .site-title,
 .site-title:visited {
-  color: #f8fafc;
+  color: #0f172a;
   font-size: 1.8rem;
   letter-spacing: -0.02em;
   margin-right: 32px;
@@ -69,8 +70,8 @@ p, li {
 }
 
 .site-nav .page-link {
-  color: #e5e7eb;
-  font-weight: 600;
+  color: #475569;
+  font-weight: 500;
   padding: 0.25rem 0.1rem;
   line-height: 1.2;
 
@@ -79,9 +80,9 @@ p, li {
   }
 
   &:hover {
-    color: #ffffff;
+    color: #0f172a;
     text-decoration: none;
-    border-bottom: 2px solid #60a5fa;
+    border-bottom: 2px solid #0f172a;
   }
 }
 
@@ -90,6 +91,62 @@ p, li {
   max-width: 1080px;
   padding-left: 20px;
   padding-right: 20px;
+}
+
+/* Medium-like reading width */
+.post-content,
+.post-header {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.post-header {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.post-title {
+  font-size: clamp(2rem, 3vw, 2.6rem);
+  line-height: 1.2;
+  margin-bottom: 0.6rem;
+}
+
+.post-meta {
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
+.post-content p,
+.post-content li {
+  line-height: 1.8;
+}
+
+/* Clean link styling */
+.post-content a {
+  color: #0f172a;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+
+  &:hover {
+    color: #1d4ed8;
+  }
+}
+
+/* Code block polish */
+pre,
+code {
+  font-size: 0.95em;
+}
+
+pre {
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 1rem;
+  overflow-x: auto;
 }
 
 /* Footer icons row */
