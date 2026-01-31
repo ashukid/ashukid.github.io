@@ -4,7 +4,7 @@ layout: post
 title: "Broke but want to travel alone? — Here’s how"
 excerpt: Travelling on a student budget can work if you plan, stay flexible, and use a few simple money and safety habits.
 date: 2025-12-04
-image: https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80
+image: https://images.unsplash.com/photo-1707344088547-3cf7cea5ca49?auto=format&fit=crop&w=1200&q=80
 ---
 
 
